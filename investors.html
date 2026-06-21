@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launchpad for Investors — Portfolio Tracking, Deal Flow & AI Insights</title>
+  <meta name="description" content="Give your fund a competitive edge. Launchpad's investor platform delivers real-time portfolio analytics, AI-curated deal flow, and automated LP reporting in one unified workspace." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .investor-eyebrow { color: var(--investor); }
+    .investor-eyebrow::before, .investor-eyebrow::after { background: #93C5FD; }
+
+    .benefit-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 32px;
+      transition: all var(--t) var(--ease);
+    }
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: #BFDBFE;
+    }
+    .benefit-icon {
+      width: 52px; height: 52px;
+      background: var(--investor-bg);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    .benefit-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+    .benefit-desc  { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+    .deep-dive {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .deep-dive:last-child { margin-bottom: 0; }
+    .deep-dive.flip { direction: rtl; }
+    .deep-dive.flip > * { direction: ltr; }
+    .deep-dive-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: var(--investor-bg);
+      color: var(--investor);
+      border-radius: var(--r-full);
+      font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .8px;
+      margin-bottom: 16px;
+    }
+    .deep-dive-title { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 14px; }
+    .deep-dive-desc  { font-size: 16px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 28px; }
+    .deep-dive-list  { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .deep-dive-item  { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-secondary); }
+    .deep-dive-check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--investor-bg);
+      color: var(--investor);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .investor-panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--investor);
+      border-radius: var(--r-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-xl);
+    }
+    .investor-panel-hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .panel-ttl { font-size: 15px; font-weight: 700; color: var(--dark); }
+    .panel-live {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--success);
+    }
+    .panel-live::before {
+      content: ''; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--success);
+      animation: pulse-dot 1.8s infinite;
+    }
+    .mini-chart { display: flex; align-items: flex-end; gap: 6px; height: 72px; margin: 18px 0; }
+    .mini-bar { flex: 1; border-radius: 4px 4px 0 0; background: #DBEAFE; transition: all var(--t) var(--ease); }
+    .mini-bar.active { background: var(--investor-grad); }
+    .mini-bar:hover  { background: var(--investor); }
+    .portfolio-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .portfolio-row:last-child { border-bottom: none; }
+    .portfolio-logo {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .portfolio-name  { font-size: 14px; font-weight: 600; color: var(--dark); }
+    .portfolio-stage { font-size: 12px; color: var(--text-muted); }
+    .portfolio-num   { margin-left: auto; font-size: 14px; font-weight: 700; color: var(--dark); }
+    .portfolio-chg   { font-size: 12px; font-weight: 600; margin-left: 8px; }
+    .portfolio-chg.up   { color: var(--success); }
+    .portfolio-chg.down { color: var(--danger); }
+
+    @media (max-width: 1024px) {
+      .deep-dive, .deep-dive.flip { grid-template-columns: 1fr; direction: ltr; gap: 40px; text-align: center; }
+      .deep-dive-list { align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="white"/></svg>
+      </span>
+      Launchpad
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#features" class="nav-link">Features</a>
+      <a href="index.html#solutions" class="nav-link">Solutions</a>
+      <a href="investors.html" class="nav-link investor active">For Investors</a>
+      <a href="founders.html" class="nav-link founder">For Founders</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="nav-login">Sign In</a>
+      <a href="#" class="btn btn-investor">Join as Investor</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-drawer">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="index.html#features" class="mobile-nav-link">Features</a>
+  <a href="founders.html" class="mobile-nav-link">For Founders</a>
+  <a href="index.html#pricing" class="mobile-nav-link">Pricing</a>
+  <div class="mobile-divider"></div>
+  <div class="mobile-actions">
+    <a href="#" class="btn btn-secondary">Sign In</a>
+    <a href="#" class="btn btn-investor">Join as Investor</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero investor-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Trusted by 2,500+ investors globally
+        </div>
+        <h1 class="hero-title">
+          Your fund's <br><span class="hl">competitive edge</span><br>starts here
+        </h1>
+        <p class="hero-desc">
+          Launchpad gives investors a unified command center for deal flow, portfolio management, LP reporting, and AI-powered insights — so you can spend less time on admin and more time finding the next breakout company.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-investor btn-lg">Start Free Trial</a>
+          <a href="#" class="btn btn-outline-white btn-lg">Schedule a Demo</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <span class="trust-avatar">MR</span>
+            <span class="trust-avatar">AK</span>
+            <span class="trust-avatar">LP</span>
+            <span class="trust-avatar">HW</span>
+          </div>
+          <p class="trust-text"><strong>Top VCs and angels</strong> rely on Launchpad daily</p>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-chip" style="top:-16px;right:-20px;">
+          <div class="chip-icon blue">📊</div>
+          <div><div class="chip-value">$48.2M</div><div class="chip-label">Portfolio Value</div></div>
+        </div>
+        <div class="hero-mockup">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+            <div class="mockup-title-bar"></div>
+          </div>
+          <div class="mockup-metrics">
+            <div class="mock-metric"><div class="mock-metric-label">Deals Reviewed</div><div class="mock-metric-val">148</div><div class="mock-metric-chg">▲ Q4</div></div>
+            <div class="mock-metric"><div class="mock-metric-label">Portfolio Cos.</div><div class="mock-metric-val">24</div><div class="mock-metric-chg">▲ 3 new</div></div>
+            <div class="mock-metric"><div class="mock-metric-label">Net IRR</div><div class="mock-metric-val">31%</div><div class="mock-metric-chg">↑ 4pp YoY</div></div>
+          </div>
+          <div class="mock-chart">
+            <div class="mock-chart-hdr"><span class="mock-chart-label">Portfolio Performance</span><span class="mock-chart-period">2024</span></div>
+            <div class="mock-bars">
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+            </div>
+          </div>
+          <div class="mock-activity">
+            <div class="mock-activity-item"><span class="mock-activity-dot green"></span><div class="mock-activity-line"></div><span class="mock-activity-time">New deal match</span></div>
+            <div class="mock-activity-item"><span class="mock-activity-dot blue"></span><div class="mock-activity-line" style="width:70%"></div><span class="mock-activity-time">Founder update</span></div>
+            <div class="mock-activity-item"><span class="mock-activity-dot amber"></span><div class="mock-activity-line" style="width:55%"></div><span class="mock-activity-time">AI insight</span></div>
+          </div>
+        </div>
+        <div class="hero-chip" style="bottom:8px;left:-28px;">
+          <div class="chip-icon green">🔔</div>
+          <div><div class="chip-value">5 Matches</div><div class="chip-label">New this week</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number" data-count="2500" data-final="2,500+" data-prefix="">2,500+</div><div class="stat-label">Verified Investors</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="10000" data-final="10,000+" data-prefix="">10K+</div><div class="stat-label">Vetted Startups</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="2500000000" data-final="$2.5B+" data-prefix="$">$2.5B+</div><div class="stat-label">Capital Deployed</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="8" data-final="8 hrs" data-suffix="">8 hrs</div><div class="stat-label">Saved per investor per week</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section-py bg-white">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow investor-eyebrow">Investor Benefits</div>
+      <h2 class="section-heading">Built for how investors actually work</h2>
+      <p class="section-sub">From sourcing to monitoring, every workflow is designed around how modern investors operate — solo angels to multi-GP funds.</p>
+    </div>
+    <div class="features-grid">
+      <div class="benefit-card" data-animate data-delay="100">
+        <div class="benefit-icon">🎯</div>
+        <h3 class="benefit-title">Thesis-Aligned Deal Flow</h3>
+        <p class="benefit-desc">Set your investment criteria once. Our AI continuously surfaces deals matching your stage, sector, geography, and check size — no more noise.</p>
+      </div>
+      <div class="benefit-card" data-animate data-delay="200">
+        <div class="benefit-icon">📊</div>
+        <h3 class="benefit-title">Portfolio Command Center</h3>
+        <p class="benefit-desc">One dashboard for your entire portfolio. Track KPIs, runway, headcount, and key milestones across all companies in real time.</p>
+      </div>
+      <div class="benefit-card" data-animate data-delay="300">
+        <div class="benefit-icon">🔍</div>
+        <h3 class="benefit-title">Deep Due Diligence Tools</h3>
+        <p class="benefit-desc">Structured DD checklists, document request workflows, and AI-generated company summaries to accelerate your decision-making.</p>
+      </div>
+      <div class="benefit-card" data-animate data-delay="100">
+        <div class="benefit-icon">📬</div>
+        <h3 class="benefit-title">Founder Update Inbox</h3>
+        <p class="benefit-desc">All founder reports in a structured inbox with key metrics auto-extracted, trend lines built in, and action items surfaced automatically.</p>
+      </div>
+      <div class="benefit-card" data-animate data-delay="200">
+        <div class="benefit-icon">📄</div>
+        <h3 class="benefit-title">LP Reporting Suite</h3>
+        <p class="benefit-desc">Generate beautiful, accurate LP reports in minutes with one-click templates. Consolidated data from all portfolio companies — automatically.</p>
+      </div>
+      <div class="benefit-card" data-animate data-delay="300">
+        <div class="benefit-icon">🤖</div>
+        <h3 class="benefit-title">AI-Powered Intelligence</h3>
+        <p class="benefit-desc">Proactive AI alerts, follow-on recommendations, and market signal monitoring keep you ahead of every portfolio development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE DEEP DIVES -->
+<section class="section-py bg-light">
+  <div class="container">
+    <div class="deep-dive" data-animate>
+      <div>
+        <div class="deep-dive-tag">📊 Portfolio Tracking</div>
+        <h2 class="deep-dive-title">Real-time visibility into every portfolio company</h2>
+        <p class="deep-dive-desc">Launchpad aggregates data from your portfolio companies through direct integrations and AI-extracted metrics — so your dashboard is always current without any manual work.</p>
+        <div class="deep-dive-list">
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Live KPI dashboards with 50+ metric types</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Automated data ingestion from Stripe, QuickBooks, Salesforce, and more</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Cohort analysis and comparative benchmarking</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Custom KPI thresholds with smart alerts</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Runway forecasting and burn rate analysis</div>
+        </div>
+        <a href="#" class="btn btn-investor btn-lg">See Portfolio Dashboard →</a>
+      </div>
+      <div>
+        <div class="investor-panel">
+          <div class="investor-panel-hdr">
+            <div class="panel-ttl">Portfolio Performance</div>
+            <div class="panel-live">Live</div>
+          </div>
+          <div class="mini-chart">
+            <div class="mini-bar" style="height:40%"></div>
+            <div class="mini-bar" style="height:55%"></div>
+            <div class="mini-bar" style="height:45%"></div>
+            <div class="mini-bar" style="height:70%"></div>
+            <div class="mini-bar" style="height:60%"></div>
+            <div class="mini-bar" style="height:80%"></div>
+            <div class="mini-bar active" style="height:100%"></div>
+          </div>
+          <div class="portfolio-row">
+            <div class="portfolio-logo" style="background:var(--investor-grad)">NT</div>
+            <div><div class="portfolio-name">NovaTech AI</div><div class="portfolio-stage">Series A · SaaS</div></div>
+            <div class="portfolio-num">$12.4M</div><span class="portfolio-chg up">▲ 34%</span>
+          </div>
+          <div class="portfolio-row">
+            <div class="portfolio-logo" style="background:var(--founder-grad)">GF</div>
+            <div><div class="portfolio-name">GreenFlow</div><div class="portfolio-stage">Seed · CleanTech</div></div>
+            <div class="portfolio-num">$3.1M</div><span class="portfolio-chg up">▲ 18%</span>
+          </div>
+          <div class="portfolio-row">
+            <div class="portfolio-logo" style="background:var(--gradient)">BH</div>
+            <div><div class="portfolio-name">BioHealth Labs</div><div class="portfolio-stage">Series B · BioTech</div></div>
+            <div class="portfolio-num">$28.7M</div><span class="portfolio-chg up">▲ 41%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deep-dive flip" data-animate>
+      <div>
+        <div class="deep-dive-tag">🔍 Startup Discovery</div>
+        <h2 class="deep-dive-title">Stop sifting through hundreds of cold emails</h2>
+        <p class="deep-dive-desc">Launchpad's AI learns what you invest in and proactively surfaces the most relevant companies with an AI-generated investment memo and compatibility score.</p>
+        <div class="deep-dive-list">
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>AI compatibility scores ranked by thesis alignment</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Traction signals: MRR growth, user growth, team velocity</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>One-click warm introductions via shared connections</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Filter by 40+ parameters including co-investor preference</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>AI-generated risk assessments and competitive landscape</div>
+        </div>
+        <a href="#" class="btn btn-investor btn-lg">Browse Deal Flow →</a>
+      </div>
+      <div>
+        <div class="investor-panel">
+          <div class="investor-panel-hdr">
+            <div class="panel-ttl">Deal Flow — This Week</div>
+            <span class="badge badge-investor">14 New</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div class="panel-list-item">
+              <div class="panel-list-avatar" style="background:var(--investor-grad)">CI</div>
+              <div><div class="panel-list-name">Cashflow Intelligence</div><div class="panel-list-meta">Series A · Fintech · $1.2M MRR</div></div>
+              <span class="panel-list-tag green">92% match</span>
+            </div>
+            <div class="panel-list-item">
+              <div class="panel-list-avatar">QD</div>
+              <div><div class="panel-list-name">QuantumDrive</div><div class="panel-list-meta">Seed · DeepTech · $180K MRR</div></div>
+              <span class="panel-list-tag blue">88% match</span>
+            </div>
+            <div class="panel-list-item">
+              <div class="panel-list-avatar" style="background:var(--gradient)">MH</div>
+              <div><div class="panel-list-name">MediHub AI</div><div class="panel-list-meta">Series A · HealthTech · $890K MRR</div></div>
+              <span class="panel-list-tag purple">85% match</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="deep-dive" data-animate>
+      <div>
+        <div class="deep-dive-tag">📄 LP Reporting</div>
+        <h2 class="deep-dive-title">Reports your LPs will actually love</h2>
+        <p class="deep-dive-desc">Generate comprehensive, beautifully formatted LP reports in minutes. Our reporting suite pulls live data, calculates returns automatically, and formats everything into institutional-grade documents.</p>
+        <div class="deep-dive-list">
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Quarterly and annual LP report templates</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Automated TVPI, DPI, RVPI, and IRR calculations</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Individual company narratives with AI-assisted writing</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Custom branding with your fund logo and colors</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Secure LP portal for report distribution and Q&amp;A</div>
+        </div>
+        <a href="#" class="btn btn-investor btn-lg">See Sample Report →</a>
+      </div>
+      <div>
+        <div class="investor-panel">
+          <div class="investor-panel-hdr">
+            <div class="panel-ttl">Q4 2024 LP Report</div>
+            <span class="panel-badge investor">Draft Ready</span>
+          </div>
+          <div class="panel-stat-row">
+            <div class="panel-stat"><div class="panel-stat-val">3.2×</div><div class="panel-stat-label">TVPI</div></div>
+            <div class="panel-stat"><div class="panel-stat-val">31%</div><div class="panel-stat-label">Net IRR</div></div>
+            <div class="panel-stat"><div class="panel-stat-val">1.4×</div><div class="panel-stat-label">DPI</div></div>
+          </div>
+          <div style="padding:16px;background:var(--bg-light);border-radius:var(--r-md);margin-top:12px">
+            <div style="font-size:13px;font-weight:600;color:var(--dark);margin-bottom:8px">Portfolio Highlights</div>
+            <div style="font-size:13px;color:var(--text-secondary);line-height:1.7">Q4 was marked by strong performance from NovaTech AI (Series B close at 4.1× entry) and two new investments in emerging fintech operators...</div>
+            <a href="#" style="font-size:13px;color:var(--investor);font-weight:600;display:inline-block;margin-top:10px">Generate Full Report →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI FOR INVESTORS -->
+<section class="section-py bg-white">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow investor-eyebrow">AI Intelligence</div>
+      <h2 class="section-heading">Your always-on analyst</h2>
+      <p class="section-sub">Launchpad's AI layer works 24/7 — monitoring your portfolio, scanning deal flow, and delivering insights exactly when you need them.</p>
+    </div>
+    <div class="ai-layout">
+      <div class="ai-list">
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--investor-bg)">🔮</div><div><div class="ai-item-title">Follow-On Recommendations</div><div class="ai-item-desc">AI predicts which portfolio companies are approaching inflection points and recommends optimal follow-on timing and sizing.</div></div></div>
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--investor-bg)">📡</div><div><div class="ai-item-title">Market Signal Monitoring</div><div class="ai-item-desc">Continuous scanning of news, funding announcements, and hiring signals to surface competitive threats and tailwinds for your companies.</div></div></div>
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--investor-bg)">⚠️</div><div><div class="ai-item-title">Early Warning System</div><div class="ai-item-desc">AI detects leading indicators of portfolio company distress — declining engagement, missed metrics, team changes — before they become critical.</div></div></div>
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--investor-bg)">🤝</div><div><div class="ai-item-title">Network Intelligence</div><div class="ai-item-desc">Identify co-investor opportunities, expert introductions, and potential acquirers for your portfolio using the Launchpad relationship graph.</div></div></div>
+      </div>
+      <div class="ai-visual" data-animate>
+        <div class="ai-chat-msg">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-bubble bot">Good morning! Here's your portfolio intelligence briefing for today.</div>
+        </div>
+        <div class="ai-insight-card">
+          <div class="ai-insight-icon">⚠️</div>
+          <div><strong>NovaTech AI</strong> — Hiring velocity slowed 40% last month. CEO hasn't posted an update in 6 weeks. Consider scheduling a check-in call.</div>
+        </div>
+        <div class="ai-insight-card" style="background:var(--success-bg);border-color:var(--success);">
+          <div class="ai-insight-icon">🚀</div>
+          <div style="color:var(--success);"><strong>GreenFlow</strong> hit $500K MRR milestone. 3 investors in your network are actively seeking CleanTech Series A deals.</div>
+        </div>
+        <div class="ai-chat-msg user">
+          <div class="ai-avatar user">👤</div>
+          <div class="ai-bubble user">What's my portfolio's average net burn multiple?</div>
+        </div>
+        <div class="ai-chat-msg">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-bubble bot">Your portfolio's median net burn multiple is <strong>1.4×</strong> — 28% better than Series A SaaS benchmarks. BioHealth Labs leads at 0.8×.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-py bg-light">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow investor-eyebrow">Investor Stories</div>
+      <h2 class="section-heading">What investors say about Launchpad</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" style="border-top:2px solid var(--investor)" data-animate data-delay="100">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <div class="t-quote">"</div>
+        <p class="t-text">The deal flow quality is unlike anything else on the market. Our AI match scores have been consistently accurate — we've seen 3 portfolio companies from Launchpad matches hit significant milestones in under 18 months.</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:var(--investor-grad)">MR</div>
+          <div><div class="t-name">Michael Rodriguez</div><div class="t-role">Partner, Apex Capital · $120M AUM</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card featured" data-animate data-delay="200">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <div class="t-quote">"</div>
+        <p class="t-text">LP reporting used to take my team two full days every quarter. With Launchpad, it's a 20-minute review. The data accuracy is exceptional and our LPs have commented on the improved transparency and presentation quality.</p>
+        <div class="t-author">
+          <div class="t-avatar">AK</div>
+          <div><div class="t-name">Amanda Kim</div><div class="t-role">Managing Director, Harbor Ventures</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" style="border-top:2px solid var(--investor)" data-animate data-delay="300">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <div class="t-quote">"</div>
+        <p class="t-text">As an angel managing 30+ portfolio companies, I was drowning in founder emails. Launchpad's update inbox and AI summaries have completely transformed my ability to stay informed without being overwhelmed.</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:var(--gradient)">LP</div>
+          <div><div class="t-name">Lucas Park</div><div class="t-role">Angel Investor · 34 portfolio companies</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-py bg-white">
+  <div class="container">
+    <div class="faq-layout">
+      <div data-animate>
+        <div class="eyebrow investor-eyebrow">FAQ</div>
+        <h2 class="faq-side-title">Investor questions, answered</h2>
+        <p class="faq-side-desc">Everything you need to know about getting started on Launchpad as an investor. Have more questions?</p>
+        <a href="#" class="btn btn-investor" style="margin-top:8px">Book a Demo</a>
+      </div>
+      <div class="faq-list" data-animate data-delay="200">
+        <div class="faq-item"><div class="faq-q">How are startups vetted before appearing in deal flow?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Every company goes through identity verification, business registration confirmation, financial data validation, and AI-powered traction analysis. We decline roughly 70% of companies that apply, ensuring only genuine, serious founders reach your feed.</p></div></div>
+        <div class="faq-item"><div class="faq-q">Can I customize my deal flow filters and preferences?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Absolutely. Set granular preferences including stage, sectors, geographies, check size range, business model type, and co-investor preferences. Your AI model also learns from your engagement behavior over time.</p></div></div>
+        <div class="faq-item"><div class="faq-q">How does portfolio tracking work with existing investments?<span class="faq-toggle">+</span></div><div class="faq-a"><p>You can import your existing portfolio via CSV or connect directly to cap table software (Carta, Pulley). For existing portfolio companies on Launchpad, data syncs automatically. For others, you can manually input metrics or invite founders to submit updates.</p></div></div>
+        <div class="faq-item"><div class="faq-q">Is Launchpad suitable for solo angels as well as VC funds?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Yes — Launchpad serves everyone from solo angels writing $10K checks to multi-GP funds with $500M+ AUM. The platform scales to your needs with appropriate feature tiers for each investor type.</p></div></div>
+        <div class="faq-item"><div class="faq-q">How does the LP reporting handle different fund structures?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Our suite supports standard VC fund structures, SPVs, rolling funds, and scout programs. You can create multiple fund profiles under one account and generate separate reports for each. The system handles capital call schedules, distribution waterfalls, and management fee calculations automatically.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner" data-animate>
+      <h2 class="cta-title">Give your fund the<br>advantage it deserves</h2>
+      <p class="cta-desc">Join thousands of investors who've transformed their workflow with Launchpad. Start your free trial today — no credit card required.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-white btn-xl">Start Free Trial</a>
+        <a href="#" class="btn btn-outline-white btn-xl">Schedule a Demo</a>
+      </div>
+      <p class="cta-note">Free 14-day trial · SOC 2 certified · Cancel anytime</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="white"/></svg></div>
+          Launchpad
+        </div>
+        <p class="footer-tagline">The AI-powered platform connecting ambitious founders with the investors who can take them further.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">⌥</a><a href="#" class="social-link">▶</a>
+        </div>
+      </div>
+      <div><div class="footer-col-hd">Product</div><div class="footer-links"><a href="index.html#features" class="footer-link">Features</a><a href="index.html#pricing" class="footer-link">Pricing</a><a href="#" class="footer-link">Changelog</a><a href="#" class="footer-link">API Docs</a></div></div>
+      <div><div class="footer-col-hd">Investors</div><div class="footer-links"><a href="#" class="footer-link">Portfolio Tracking</a><a href="#" class="footer-link">Deal Flow</a><a href="#" class="footer-link">LP Reporting</a><a href="#" class="footer-link">AI Insights</a></div></div>
+      <div><div class="footer-col-hd">Company</div><div class="footer-links"><a href="#" class="footer-link">About Us</a><a href="#" class="footer-link">Blog</a><a href="#" class="footer-link">Careers</a><a href="#" class="footer-link">Contact</a></div></div>
+      <div><div class="footer-col-hd">Resources</div><div class="footer-links"><a href="#" class="footer-link">Help Center</a><a href="founders.html" class="footer-link">For Founders</a><a href="#faq" class="footer-link">FAQ</a><a href="#" class="footer-link">Webinars</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Launchpad, Inc. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a><a href="#">Security</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launchpad for Founders — Fundraising, Investor Matching & AI Pitch Coach</title>
+  <meta name="description" content="Raise your round faster. Launchpad gives founders a complete fundraising toolkit — investor matching, pipeline CRM, secure data room, and an AI coach that helps you close." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .founder-eyebrow { color: var(--founder); }
+    .founder-eyebrow::before, .founder-eyebrow::after { background: #6EE7B7; }
+
+    .founder-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--r-xl);
+      padding: 32px;
+      transition: all var(--t) var(--ease);
+    }
+    .founder-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: #A7F3D0;
+    }
+    .founder-icon {
+      width: 52px; height: 52px;
+      background: var(--founder-bg);
+      border-radius: var(--r-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 18px;
+    }
+    .founder-card-title { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+    .founder-card-desc  { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+
+    .deep-dive {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .deep-dive:last-child { margin-bottom: 0; }
+    .deep-dive.flip { direction: rtl; }
+    .deep-dive.flip > * { direction: ltr; }
+    .deep-dive-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px;
+      background: var(--founder-bg); color: var(--founder);
+      border-radius: var(--r-full);
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .8px;
+      margin-bottom: 16px;
+    }
+    .deep-dive-title { font-family: var(--font-display); font-size: clamp(24px,3vw,36px); font-weight: 800; color: var(--dark); line-height: 1.2; margin-bottom: 14px; }
+    .deep-dive-desc  { font-size: 16px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 28px; }
+    .deep-dive-list  { display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .deep-dive-item  { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-secondary); }
+    .deep-dive-check {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--founder-bg); color: var(--founder);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+
+    .founder-panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--founder);
+      border-radius: var(--r-xl);
+      padding: 28px;
+      box-shadow: var(--shadow-xl);
+    }
+    .founder-panel-hdr {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .panel-ttl { font-size: 15px; font-weight: 700; color: var(--dark); }
+
+    /* Kanban column */
+    .kanban-col {
+      background: var(--bg-light);
+      border-radius: var(--r-md);
+      padding: 12px;
+      min-width: 0;
+    }
+    .kanban-col-hd {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .8px; color: var(--text-muted);
+      margin-bottom: 10px; padding: 0 4px;
+    }
+    .kanban-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin-bottom: 20px;
+    }
+    .kanban-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: var(--r-sm); padding: 10px 12px;
+    }
+    .kanban-card-name { font-size: 12px; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
+    .kanban-card-meta { font-size: 11px; color: var(--text-muted); }
+    .kanban-card-tag  {
+      display: inline-block; margin-top: 6px;
+      padding: 2px 7px; border-radius: var(--r-full);
+      font-size: 10px; font-weight: 600;
+    }
+    .kanban-card-tag.warm   { background: #FFF7ED; color: var(--accent); }
+    .kanban-card-tag.active { background: var(--investor-bg); color: var(--investor); }
+    .kanban-card-tag.close  { background: var(--founder-bg); color: var(--founder); }
+
+    /* Progress bar */
+    .progress-bar {
+      height: 8px; background: var(--border);
+      border-radius: 4px; overflow: hidden; margin-top: 6px;
+    }
+    .progress-fill { height: 100%; border-radius: 4px; background: var(--founder-grad); }
+
+    /* Pitch coach card */
+    .pitch-score {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px; background: var(--bg-light);
+      border-radius: var(--r-md); margin-bottom: 12px;
+    }
+    .pitch-score-num {
+      font-family: var(--font-display); font-size: 36px; font-weight: 800;
+      color: var(--founder); min-width: 60px;
+    }
+    .pitch-score-label { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 2px; }
+    .pitch-score-sub   { font-size: 12px; color: var(--text-muted); }
+    .pitch-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; background: var(--bg-white);
+      border: 1px solid var(--border); border-radius: var(--r-sm); margin-bottom: 8px;
+    }
+    .pitch-item-label { font-size: 13px; color: var(--text-secondary); }
+    .pitch-item-score { font-size: 13px; font-weight: 700; }
+    .pitch-item-score.high   { color: var(--founder); }
+    .pitch-item-score.medium { color: var(--warning); }
+    .pitch-item-score.low    { color: var(--danger); }
+
+    @media (max-width: 1024px) {
+      .deep-dive, .deep-dive.flip { grid-template-columns: 1fr; direction: ltr; gap: 40px; text-align: center; }
+      .deep-dive-list { align-items: center; }
+      .kanban-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="white"/></svg>
+      </span>
+      Launchpad
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#features" class="nav-link">Features</a>
+      <a href="index.html#solutions" class="nav-link">Solutions</a>
+      <a href="investors.html" class="nav-link investor">For Investors</a>
+      <a href="founders.html" class="nav-link founder active">For Founders</a>
+      <a href="index.html#pricing" class="nav-link">Pricing</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="nav-login">Sign In</a>
+      <a href="#" class="btn btn-founder">Start Fundraising</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-drawer">
+  <a href="index.html" class="mobile-nav-link">Home</a>
+  <a href="index.html#features" class="mobile-nav-link">Features</a>
+  <a href="investors.html" class="mobile-nav-link">For Investors</a>
+  <a href="index.html#pricing" class="mobile-nav-link">Pricing</a>
+  <div class="mobile-divider"></div>
+  <div class="mobile-actions">
+    <a href="#" class="btn btn-secondary">Sign In</a>
+    <a href="#" class="btn btn-founder">Start Fundraising</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero founder-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Used by 10,000+ founders raising capital
+        </div>
+        <h1 class="hero-title">
+          Raise your round<br><span class="hl">smarter &amp; faster</span>
+        </h1>
+        <p class="hero-desc">
+          Stop cold emailing in the dark. Launchpad matches you with investors who are actively looking for companies like yours — then gives you the tools to manage the process from first contact to signed term sheet.
+        </p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-founder btn-lg">Get Started Free</a>
+          <a href="#" class="btn btn-outline-white btn-lg">See How It Works</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <span class="trust-avatar">SC</span>
+            <span class="trust-avatar">JP</span>
+            <span class="trust-avatar">AK</span>
+            <span class="trust-avatar">TR</span>
+          </div>
+          <p class="trust-text"><strong>Founders closed $2.5B+</strong> using Launchpad</p>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-chip" style="top:-16px;right:-20px;">
+          <div class="chip-icon green">🤝</div>
+          <div><div class="chip-value">$3.2M</div><div class="chip-label">Round Committed</div></div>
+        </div>
+        <div class="hero-mockup">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span>
+            <div class="mockup-title-bar"></div>
+          </div>
+          <div class="mockup-metrics">
+            <div class="mock-metric"><div class="mock-metric-label">Investors Matched</div><div class="mock-metric-val">48</div><div class="mock-metric-chg">▲ 12 new</div></div>
+            <div class="mock-metric"><div class="mock-metric-label">Round Progress</div><div class="mock-metric-val">67%</div><div class="mock-metric-chg">$3.2M / $5M</div></div>
+            <div class="mock-metric"><div class="mock-metric-label">Pitch Score</div><div class="mock-metric-val">89</div><div class="mock-metric-chg">AI rated</div></div>
+          </div>
+          <div class="mock-chart">
+            <div class="mock-chart-hdr"><span class="mock-chart-label">Investor Engagement</span><span class="mock-chart-period">Last 30 days</span></div>
+            <div class="mock-bars">
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div><div class="mock-bar"></div>
+            </div>
+          </div>
+          <div class="mock-activity">
+            <div class="mock-activity-item"><span class="mock-activity-dot green"></span><div class="mock-activity-line"></div><span class="mock-activity-time">Term sheet received</span></div>
+            <div class="mock-activity-item"><span class="mock-activity-dot blue"></span><div class="mock-activity-line" style="width:70%"></div><span class="mock-activity-time">DD request sent</span></div>
+            <div class="mock-activity-item"><span class="mock-activity-dot amber"></span><div class="mock-activity-line" style="width:50%"></div><span class="mock-activity-time">AI pitch feedback</span></div>
+          </div>
+        </div>
+        <div class="hero-chip" style="bottom:8px;left:-28px;">
+          <div class="chip-icon green">🤖</div>
+          <div><div class="chip-value">Score: 89</div><div class="chip-label">Pitch analyzed</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number" data-count="10000" data-final="10,000+" data-prefix="">10K+</div><div class="stat-label">Founders on Platform</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="2500000000" data-final="$2.5B+" data-prefix="$">$2.5B+</div><div class="stat-label">Capital Raised</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="68" data-final="68 days" data-suffix="">68 days</div><div class="stat-label">Avg. Time to Close</div></div>
+      <div class="stat-item"><div class="stat-number" data-count="40" data-final="40%" data-suffix="%">40%</div><div class="stat-label">Faster Than Industry Avg.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="section-py bg-white">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow founder-eyebrow">Founder Benefits</div>
+      <h2 class="section-heading">Your unfair advantage in fundraising</h2>
+      <p class="section-sub">From crafting your story to closing your round, Launchpad gives founders every tool they need to raise capital with confidence.</p>
+    </div>
+    <div class="features-grid">
+      <div class="founder-card" data-animate data-delay="100">
+        <div class="founder-icon">🤖</div>
+        <h3 class="founder-card-title">AI Investor Matching</h3>
+        <p class="founder-card-desc">Get matched with investors who are actively looking for companies like yours — filtered by sector, stage, check size, and historical portfolio fit.</p>
+      </div>
+      <div class="founder-card" data-animate data-delay="200">
+        <div class="founder-icon">🗂️</div>
+        <h3 class="founder-card-title">Fundraising CRM</h3>
+        <p class="founder-card-desc">Track every investor conversation in a visual pipeline — from first contact to term sheet. Never let a warm relationship go cold again.</p>
+      </div>
+      <div class="founder-card" data-animate data-delay="300">
+        <div class="founder-icon">🔒</div>
+        <h3 class="founder-card-title">Secure Data Room</h3>
+        <p class="founder-card-desc">Share pitch decks, financials, and due diligence materials with granular permissions. See who views what, and when, in real time.</p>
+      </div>
+      <div class="founder-card" data-animate data-delay="100">
+        <div class="founder-icon">✍️</div>
+        <h3 class="founder-card-title">AI Pitch Coach</h3>
+        <p class="founder-card-desc">Get instant, data-driven feedback on your narrative, financial model, and competitive positioning benchmarked against successful raises.</p>
+      </div>
+      <div class="founder-card" data-animate data-delay="200">
+        <div class="founder-icon">📬</div>
+        <h3 class="founder-card-title">Investor Updates</h3>
+        <p class="founder-card-desc">Keep investors informed and engaged with beautiful monthly updates. Automated templates extract your metrics and format everything automatically.</p>
+      </div>
+      <div class="founder-card" data-animate data-delay="300">
+        <div class="founder-icon">📈</div>
+        <h3 class="founder-card-title">Progress Dashboard</h3>
+        <p class="founder-card-desc">Track your fundraising progress, investor engagement scores, and round completion in a single, real-time dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE DEEP DIVES -->
+<section class="section-py bg-light">
+  <div class="container">
+    <!-- Fundraising Pipeline -->
+    <div class="deep-dive" data-animate>
+      <div>
+        <div class="deep-dive-tag">🗂️ Fundraising Pipeline</div>
+        <h2 class="deep-dive-title">Your entire round, in one visual board</h2>
+        <p class="deep-dive-desc">Manage every investor conversation through a structured, CRM-style pipeline. Know exactly where you stand with each investor, what the next step is, and what's at risk of going cold.</p>
+        <div class="deep-dive-list">
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Visual Kanban board: Research → Outreach → Meeting → Due Diligence → Close</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Automatic follow-up reminders so no lead goes cold</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Email integration to log conversations automatically</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Round progress tracking with commitment and soft-circle visibility</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Investor engagement scores based on activity signals</div>
+        </div>
+        <a href="#" class="btn btn-founder btn-lg">Build Your Pipeline →</a>
+      </div>
+      <div>
+        <div class="founder-panel">
+          <div class="founder-panel-hdr">
+            <div class="panel-ttl">Fundraising Pipeline</div>
+            <span class="badge badge-founder">Series A · $5M</span>
+          </div>
+          <div style="margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+              <span style="font-size:13px;color:var(--text-secondary)">Round progress</span>
+              <span style="font-size:13px;font-weight:700;color:var(--founder)">67% · $3.2M</span>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:67%"></div></div>
+          </div>
+          <div class="kanban-grid">
+            <div class="kanban-col">
+              <div class="kanban-col-hd">Outreach (8)</div>
+              <div class="kanban-card"><div class="kanban-card-name">Spark VC</div><div class="kanban-card-meta">$750K</div><div class="kanban-card-tag warm">Email sent</div></div>
+              <div class="kanban-card" style="margin-top:8px"><div class="kanban-card-name">BlueSky Cap</div><div class="kanban-card-meta">$500K</div><div class="kanban-card-tag warm">Intro req.</div></div>
+            </div>
+            <div class="kanban-col">
+              <div class="kanban-col-hd">Due Diligence (3)</div>
+              <div class="kanban-card"><div class="kanban-card-name">Harbor VC</div><div class="kanban-card-meta">$500K</div><div class="kanban-card-tag active">DD active</div></div>
+              <div class="kanban-card" style="margin-top:8px"><div class="kanban-card-name">Peak Fund</div><div class="kanban-card-meta">$1M</div><div class="kanban-card-tag active">Data room</div></div>
+            </div>
+            <div class="kanban-col">
+              <div class="kanban-col-hd">Closing (2)</div>
+              <div class="kanban-card"><div class="kanban-card-name">Apex Capital</div><div class="kanban-card-meta">$1.5M lead</div><div class="kanban-card-tag close">Term sheet ✓</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Pitch Coach -->
+    <div class="deep-dive flip" data-animate>
+      <div>
+        <div class="deep-dive-tag">✍️ AI Pitch Coach</div>
+        <h2 class="deep-dive-title">Walk into every investor meeting with confidence</h2>
+        <p class="deep-dive-desc">Launchpad's AI Pitch Coach analyzes your deck, financial model, and narrative against thousands of successful fundraises — then gives you specific, actionable feedback to strengthen every aspect of your pitch.</p>
+        <div class="deep-dive-list">
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Slide-by-slide deck analysis with specific improvement suggestions</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Financial model review and projection stress-testing</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Competitive positioning gaps and differentiation coaching</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Common investor objection preparation and response coaching</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Narrative strength scoring benchmarked against successful raises</div>
+        </div>
+        <a href="#" class="btn btn-founder btn-lg">Analyze My Pitch →</a>
+      </div>
+      <div>
+        <div class="founder-panel">
+          <div class="founder-panel-hdr">
+            <div class="panel-ttl">AI Pitch Analysis</div>
+            <span class="badge badge-founder">Updated today</span>
+          </div>
+          <div class="pitch-score">
+            <div class="pitch-score-num">89</div>
+            <div>
+              <div class="pitch-score-label">Overall Pitch Score</div>
+              <div class="pitch-score-sub">Top 15% of Series A pitches analyzed</div>
+            </div>
+          </div>
+          <div class="pitch-item"><span class="pitch-item-label">Problem & Market Size</span><span class="pitch-item-score high">94 / 100</span></div>
+          <div class="pitch-item"><span class="pitch-item-label">Traction & Revenue</span><span class="pitch-item-score high">91 / 100</span></div>
+          <div class="pitch-item"><span class="pitch-item-label">Team & Credentials</span><span class="pitch-item-score high">88 / 100</span></div>
+          <div class="pitch-item"><span class="pitch-item-label">Financial Projections</span><span class="pitch-item-score medium">72 / 100</span></div>
+          <div class="pitch-item"><span class="pitch-item-label">Competitive Moat</span><span class="pitch-item-score medium">68 / 100</span></div>
+          <div style="margin-top:14px;padding:12px;background:var(--founder-bg);border-radius:var(--r-sm);font-size:13px;color:var(--founder)">
+            💡 <strong>Top suggestion:</strong> Strengthen your competitive moat narrative — add defensibility drivers and switching costs language to slide 8.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Document Management -->
+    <div class="deep-dive" data-animate>
+      <div>
+        <div class="deep-dive-tag">🔒 Data Room</div>
+        <h2 class="deep-dive-title">Every document, perfectly organized and secure</h2>
+        <p class="deep-dive-desc">Launchpad's secure data room lets you organize your entire due diligence package and share it with investors in one click. See exactly what each investor has reviewed — and when.</p>
+        <div class="deep-dive-list">
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Enterprise-grade AES-256 encryption at rest and in transit</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Granular access controls — per investor, per document</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Real-time view tracking — see when investors open your deck</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Automatic NDA signing before access is granted</div>
+          <div class="deep-dive-item"><span class="deep-dive-check">✓</span>Version control with audit trail for all document changes</div>
+        </div>
+        <a href="#" class="btn btn-founder btn-lg">Set Up Your Data Room →</a>
+      </div>
+      <div>
+        <div class="founder-panel">
+          <div class="founder-panel-hdr">
+            <div class="panel-ttl">Data Room — Series A</div>
+            <span class="badge badge-founder">5 Investors Active</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div class="panel-list-item" style="border:1px solid var(--border)">
+              <div style="font-size:20px">📄</div>
+              <div><div class="panel-list-name">Pitch Deck v7.pdf</div><div class="panel-list-meta">Viewed 14× · Last: 2 hours ago</div></div>
+              <span class="panel-list-tag green">🔥 Hot</span>
+            </div>
+            <div class="panel-list-item" style="border:1px solid var(--border)">
+              <div style="font-size:20px">📊</div>
+              <div><div class="panel-list-name">Financial Model Q4.xlsx</div><div class="panel-list-meta">Viewed 8× · Last: yesterday</div></div>
+              <span class="panel-list-tag blue">Active</span>
+            </div>
+            <div class="panel-list-item" style="border:1px solid var(--border)">
+              <div style="font-size:20px">📋</div>
+              <div><div class="panel-list-name">Cap Table.xlsx</div><div class="panel-list-meta">Viewed 6× · NDA required</div></div>
+              <span class="panel-list-tag purple">Restricted</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI PITCH COACH SECTION -->
+<section class="section-py bg-white">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow founder-eyebrow">AI for Founders</div>
+      <h2 class="section-heading">Your 24/7 fundraising advisor</h2>
+      <p class="section-sub">Launchpad's AI doesn't just give you tools — it actively coaches you through the fundraising process, helping you improve every step of the way.</p>
+    </div>
+    <div class="ai-layout">
+      <div class="ai-list">
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--founder-bg)">🎯</div><div><div class="ai-item-title">Investor Compatibility Scoring</div><div class="ai-item-desc">See exactly why each investor is a good fit — their past investments, check size history, sector focus, and what signals they look for in founders.</div></div></div>
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--founder-bg)">✍️</div><div><div class="ai-item-title">Pitch Deck Optimizer</div><div class="ai-item-desc">Upload your deck and get specific, actionable suggestions on every slide — from market sizing methodology to financial projection credibility.</div></div></div>
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--founder-bg)">💬</div><div><div class="ai-item-title">Meeting Preparation</div><div class="ai-item-desc">Before every investor meeting, get a custom briefing: the investor's portfolio, recent investments, known focus areas, and likely questions.</div></div></div>
+        <div class="ai-item"><div class="ai-item-icon" style="background:var(--founder-bg)">📊</div><div><div class="ai-item-title">Benchmark Analysis</div><div class="ai-item-desc">Compare your metrics against comparable companies that raised at your stage. Know whether your ARR, growth rate, and margins are competitive.</div></div></div>
+      </div>
+      <div class="ai-visual" data-animate>
+        <div class="ai-chat-msg user">
+          <div class="ai-avatar user">👤</div>
+          <div class="ai-bubble user">I have a meeting with Apex Capital tomorrow. How should I prepare?</div>
+        </div>
+        <div class="ai-chat-msg">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-bubble bot">Great timing! Here's your Apex Capital briefing. They've invested in 4 B2B SaaS companies at your stage in the past 18 months, all with $500K+ MRR.</div>
+        </div>
+        <div class="ai-insight-card">
+          <div class="ai-insight-icon">💡</div>
+          <div>Michael Rodriguez (the partner you're meeting) focuses heavily on <strong>net revenue retention</strong> and <strong>CAC payback</strong>. Your NRR of 118% is a strong signal — lead with it.</div>
+        </div>
+        <div class="ai-chat-msg">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-bubble bot">Expected questions: "How do you plan to expand into enterprise?" and "What's your 18-month path to profitability?" Want me to help you prep answers?</div>
+        </div>
+        <div class="ai-insight-card" style="background:var(--founder-bg);border-color:var(--founder);">
+          <div class="ai-insight-icon">✅</div>
+          <div style="color:var(--founder);">Your pitch score is <strong>89/100</strong> — top 15% for Series A. Your biggest opportunity: strengthen the competitive moat narrative on slide 8.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-py bg-light">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow founder-eyebrow">Founder Stories</div>
+      <h2 class="section-heading">Founders who raised faster with Launchpad</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" style="border-top:2px solid var(--founder)" data-animate data-delay="100">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <div class="t-quote">"</div>
+        <p class="t-text">Launchpad helped us close our Series A in just 3 months — half the time our advisors told us to budget. The investor matching was spot-on, and the AI pitch coach genuinely improved our narrative before every major meeting.</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:var(--founder-grad)">SC</div>
+          <div><div class="t-name">Sarah Chen</div><div class="t-role">CEO, TechVenture AI · $5M Series A</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card featured" data-animate data-delay="200">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <div class="t-quote">"</div>
+        <p class="t-text">As a first-time founder with no VC network, I thought fundraising would be impossible. Launchpad gave me warm access to investors I could never have reached cold, and the pitch coaching gave me the confidence to walk in and tell our story powerfully.</p>
+        <div class="t-author">
+          <div class="t-avatar">JP</div>
+          <div><div class="t-name">Jennifer Park</div><div class="t-role">Founder, BioHealth Labs · $1.8M Seed</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card" style="border-top:2px solid var(--founder)" data-animate data-delay="300">
+        <div class="t-stars"><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span></div>
+        <div class="t-quote">"</div>
+        <p class="t-text">The fundraising CRM alone was worth it. I stopped losing track of conversations, follow-up timings, and investor commitments. We went from chaos to clarity overnight, and our close rate on first meetings doubled within the first month.</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background:var(--gradient)">TR</div>
+          <div><div class="t-name">Tom Rivera</div><div class="t-role">Co-founder, DataStack · $4M Series A</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS FOR FOUNDERS -->
+<section class="how-section">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:56px" data-animate>
+      <div class="eyebrow" style="color:#6EE7B7;">Your Fundraising Journey</div>
+      <h2 class="section-heading" style="color:#fff">From zero to funded in 4 steps</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.5);margin:0 auto">A structured process that takes the guesswork out of fundraising.</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-connector"></div>
+      <div class="how-step" data-animate data-delay="100">
+        <div class="step-num" style="border-color:rgba(5,150,105,.35);background:rgba(5,150,105,.08);color:#34D399">1</div>
+        <h3 class="step-title">Build Your Profile</h3>
+        <p class="step-desc">Create a compelling company profile with your story, metrics, team background, and pitch materials in under 30 minutes.</p>
+      </div>
+      <div class="how-step" data-animate data-delay="200">
+        <div class="step-num" style="border-color:rgba(5,150,105,.35);background:rgba(5,150,105,.08);color:#34D399">2</div>
+        <h3 class="step-title">Get Matched</h3>
+        <p class="step-desc">AI analyzes your company and surfaces your top investor matches — ranked by thesis alignment, stage focus, and historical portfolio fit.</p>
+      </div>
+      <div class="how-step" data-animate data-delay="300">
+        <div class="step-num" style="border-color:rgba(5,150,105,.35);background:rgba(5,150,105,.08);color:#34D399">3</div>
+        <h3 class="step-title">Manage Outreach</h3>
+        <p class="step-desc">Use the fundraising CRM to track every conversation, set follow-up reminders, and manage your round progress from one place.</p>
+      </div>
+      <div class="how-step" data-animate data-delay="400">
+        <div class="step-num" style="border-color:rgba(5,150,105,.35);background:rgba(5,150,105,.08);color:#34D399">4</div>
+        <h3 class="step-title">Close Your Round</h3>
+        <p class="step-desc">Share your data room, coordinate due diligence, collect commitments, and manage closing logistics — all within Launchpad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-py bg-white">
+  <div class="container">
+    <div class="faq-layout">
+      <div data-animate>
+        <div class="eyebrow founder-eyebrow">FAQ</div>
+        <h2 class="faq-side-title">Founder questions, answered</h2>
+        <p class="faq-side-desc">Everything founders need to know about raising capital with Launchpad. Have more questions? We're here to help.</p>
+        <a href="#" class="btn btn-founder" style="margin-top:8px">Talk to Us</a>
+      </div>
+      <div class="faq-list" data-animate data-delay="200">
+        <div class="faq-item"><div class="faq-q">What stage of company is Launchpad right for?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Launchpad supports founders from pre-seed through Series C. Our investor network and matching engine are calibrated for each stage, and your profile and matching criteria adapt to your current round size and metrics. We're most commonly used by companies raising $500K–$20M rounds.</p></div></div>
+        <div class="faq-item"><div class="faq-q">How is Launchpad different from just using LinkedIn or cold email?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Three key differences: (1) Investors on Launchpad are actively looking to invest — they've verified their availability and thesis. (2) Our AI matches you specifically by sector, stage, and portfolio fit — not generic keyword searches. (3) Every introduction is warm and double-opt-in, significantly increasing response rates compared to cold outreach.</p></div></div>
+        <div class="faq-item"><div class="faq-q">How does the AI Pitch Coach work?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Upload your pitch deck or connect your financial model. Our AI analyzes each component against a database of 5,000+ fundraising outcomes, identifies strengths and gaps, and gives specific suggestions for improvement. You can also use the chat interface to prepare for common investor questions and work through your narrative.</p></div></div>
+        <div class="faq-item"><div class="faq-q">Is my company information kept confidential?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Absolutely. Your information is only shared with investors you explicitly choose to connect with. Data room documents require your approval before access is granted. We're SOC 2 Type II certified and use enterprise-grade encryption throughout.</p></div></div>
+        <div class="faq-item"><div class="faq-q">What does "active investor" mean on your platform?<span class="faq-toggle">+</span></div><div class="faq-a"><p>Active investors on Launchpad have been verified within the past 90 days and have confirmed they are actively deploying capital. We filter out investors who are "closed for new investments," in fundraising mode for their own fund, or haven't made an investment in 12+ months — ensuring your time is spent on genuinely active prospects.</p></div></div>
+        <div class="faq-item"><div class="faq-q">How quickly can I get started?<span class="faq-toggle">+</span></div><div class="faq-a"><p>You can create your free account and have your profile published in under 30 minutes. Investor matches appear immediately after your profile is reviewed (typically within 24 hours). Many founders have their first investor meeting scheduled within the first week on the platform.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner" data-animate>
+      <h2 class="cta-title">Your round is closer<br>than you think</h2>
+      <p class="cta-desc">Join 10,000+ founders who are raising smarter with Launchpad. Free to start. No credit card required.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-founder btn-xl">Get Started Free</a>
+        <a href="#" class="btn btn-outline-white btn-xl">See Pricing</a>
+      </div>
+      <p class="cta-note">Free plan available · 14-day trial on paid plans · Cancel anytime</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="white"/></svg></div>
+          Launchpad
+        </div>
+        <p class="footer-tagline">The AI-powered platform connecting ambitious founders with the investors who can take them further.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link">𝕏</a><a href="#" class="social-link">in</a>
+          <a href="#" class="social-link">⌥</a><a href="#" class="social-link">▶</a>
+        </div>
+      </div>
+      <div><div class="footer-col-hd">Product</div><div class="footer-links"><a href="index.html#features" class="footer-link">Features</a><a href="index.html#pricing" class="footer-link">Pricing</a><a href="#" class="footer-link">Changelog</a><a href="#" class="footer-link">API Docs</a></div></div>
+      <div><div class="footer-col-hd">Founders</div><div class="footer-links"><a href="#" class="footer-link">Fundraising CRM</a><a href="#" class="footer-link">Investor Matching</a><a href="#" class="footer-link">Data Room</a><a href="#" class="footer-link">AI Pitch Coach</a></div></div>
+      <div><div class="footer-col-hd">Company</div><div class="footer-links"><a href="#" class="footer-link">About Us</a><a href="#" class="footer-link">Blog</a><a href="#" class="footer-link">Careers</a><a href="#" class="footer-link">Contact</a></div></div>
+      <div><div class="footer-col-hd">Resources</div><div class="footer-links"><a href="#" class="footer-link">Help Center</a><a href="investors.html" class="footer-link">For Investors</a><a href="#faq" class="footer-link">FAQ</a><a href="#" class="footer-link">Fundraising Guides</a></div></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Launchpad, Inc. All rights reserved.</p>
+      <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Cookie Policy</a><a href="#">Security</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

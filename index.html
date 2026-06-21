@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launchpad — Where Capital Meets Vision</title>
+  <meta name="description" content="Launchpad is the AI-powered platform connecting investors and founders. Portfolio tracking, fundraising workflows, smart matching, and real-time analytics — all in one place." />
+  <meta name="keywords" content="investor platform, founder tools, fundraising, portfolio tracking, startup investment, AI insights" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVIGATION
+═══════════════════════════════════════════════════════════ -->
+<header class="navbar" role="banner">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-mark">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="white"/>
+        </svg>
+      </span>
+      Launchpad
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#solutions" class="nav-link">Solutions</a>
+      <a href="investors.html" class="nav-link investor">For Investors</a>
+      <a href="founders.html" class="nav-link founder">For Founders</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="nav-login">Sign In</a>
+      <a href="#" class="btn btn-primary">Get Started Free</a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" aria-hidden="true">
+  <a href="#features" class="mobile-nav-link">Features</a>
+  <a href="#solutions" class="mobile-nav-link">Solutions</a>
+  <a href="investors.html" class="mobile-nav-link">For Investors</a>
+  <a href="founders.html" class="mobile-nav-link">For Founders</a>
+  <a href="#pricing" class="mobile-nav-link">Pricing</a>
+  <div class="mobile-divider"></div>
+  <div class="mobile-actions">
+    <a href="#" class="btn btn-secondary">Sign In</a>
+    <a href="#" class="btn btn-primary">Get Started Free</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="container">
+    <div class="hero-layout">
+      <!-- Left: Copy -->
+      <div class="hero-copy">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Now with AI-powered investor matching
+        </div>
+        <h1 class="hero-title" id="hero-title">
+          Where Capital<br>
+          Meets <span class="hl">Vision</span>
+        </h1>
+        <p class="hero-desc">
+          Launchpad connects ambitious founders with strategic investors through AI-powered matching, smart analytics, and frictionless communication — all on one secure platform.
+        </p>
+        <div class="hero-actions">
+          <a href="founders.html" class="btn btn-white btn-lg">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm1 5a1 1 0 10-2 0v3H6a1 1 0 100 2h3v3a1 1 0 102 0v-3h3a1 1 0 100-2h-3V7z"/></svg>
+            I'm a Founder
+          </a>
+          <a href="investors.html" class="btn btn-outline-white btn-lg">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+            I'm an Investor
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <span class="trust-avatar">SC</span>
+            <span class="trust-avatar">MR</span>
+            <span class="trust-avatar">JP</span>
+            <span class="trust-avatar">AK</span>
+            <span class="trust-avatar">+</span>
+          </div>
+          <p class="trust-text"><strong>10,000+ founders &amp; investors</strong> already on Launchpad</p>
+        </div>
+      </div>
+
+      <!-- Right: Dashboard mockup -->
+      <div class="hero-visual">
+        <div class="hero-chip" style="top:-16px;right:-24px;">
+          <div class="chip-icon green">📈</div>
+          <div>
+            <div class="chip-value">$2.5B+</div>
+            <div class="chip-label">Total Raised</div>
+          </div>
+        </div>
+        <div class="hero-mockup">
+          <div class="mockup-bar">
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <span class="mockup-dot"></span>
+            <div class="mockup-title-bar"></div>
+          </div>
+          <div class="mockup-metrics">
+            <div class="mock-metric">
+              <div class="mock-metric-label">Portfolio Value</div>
+              <div class="mock-metric-val">$48.2M</div>
+              <div class="mock-metric-chg">▲ 14.3%</div>
+            </div>
+            <div class="mock-metric">
+              <div class="mock-metric-label">Active Deals</div>
+              <div class="mock-metric-val">24</div>
+              <div class="mock-metric-chg">▲ 6 new</div>
+            </div>
+            <div class="mock-metric">
+              <div class="mock-metric-label">Match Score</div>
+              <div class="mock-metric-val">94%</div>
+              <div class="mock-metric-chg">AI rated</div>
+            </div>
+          </div>
+          <div class="mock-chart">
+            <div class="mock-chart-hdr">
+              <span class="mock-chart-label">Deal Flow Overview</span>
+              <span class="mock-chart-period">Last 12 months</span>
+            </div>
+            <div class="mock-bars">
+              <div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div>
+              <div class="mock-bar"></div><div class="mock-bar"></div>
+            </div>
+          </div>
+          <div class="mock-activity">
+            <div class="mock-activity-item">
+              <span class="mock-activity-dot green"></span>
+              <div class="mock-activity-line"></div>
+              <span class="mock-activity-time">2m ago</span>
+            </div>
+            <div class="mock-activity-item">
+              <span class="mock-activity-dot blue"></span>
+              <div class="mock-activity-line" style="width:65%"></div>
+              <span class="mock-activity-time">18m ago</span>
+            </div>
+            <div class="mock-activity-item">
+              <span class="mock-activity-dot amber"></span>
+              <div class="mock-activity-line" style="width:80%"></div>
+              <span class="mock-activity-time">1h ago</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-chip" style="bottom:12px;left:-32px;">
+          <div class="chip-icon blue">🤖</div>
+          <div>
+            <div class="chip-value">AI Match</div>
+            <div class="chip-label">3 new investors found</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     STATS
+═══════════════════════════════════════════════════════════ -->
+<section class="stats-section" aria-label="Platform statistics">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-count="10000" data-final="10K+" data-prefix="">10K+</div>
+        <div class="stat-label">Startups on Platform</div>
+        <div class="stat-sub">Across 40+ industries</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="2500" data-final="2,500+" data-prefix="">2,500+</div>
+        <div class="stat-label">Active Investors</div>
+        <div class="stat-sub">VCs, angels &amp; family offices</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="2500000000" data-final="$2.5B+" data-prefix="$">$2.5B+</div>
+        <div class="stat-label">Capital Raised</div>
+        <div class="stat-sub">Through Launchpad connections</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-count="95" data-final="95%" data-suffix="%">95%</div>
+        <div class="stat-label">Match Accuracy</div>
+        <div class="stat-sub">AI-powered recommendations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FEATURES
+═══════════════════════════════════════════════════════════ -->
+<section id="features" class="section-py bg-white" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow">Platform Features</div>
+      <h2 class="section-heading" id="features-heading">
+        Everything you need to<br>close deals faster
+      </h2>
+      <p class="section-sub">
+        From discovery to close, Launchpad gives investors and founders the tools to build meaningful relationships and move faster.
+      </p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card" data-animate data-delay="100">
+        <div class="feature-icon">🎯</div>
+        <h3 class="feature-title">AI-Powered Matching</h3>
+        <p class="feature-desc">Our ML engine analyzes 200+ data points to match founders with the most relevant investors — by stage, sector, geography, and thesis alignment.</p>
+        <span class="feature-arrow">Learn more →</span>
+      </div>
+      <div class="feature-card" data-animate data-delay="200">
+        <div class="feature-icon">📊</div>
+        <h3 class="feature-title">Portfolio Intelligence</h3>
+        <p class="feature-desc">Real-time portfolio analytics with automated KPI tracking, cohort analysis, and custom dashboards. See your entire portfolio at a glance.</p>
+        <span class="feature-arrow">Learn more →</span>
+      </div>
+      <div class="feature-card" data-animate data-delay="300">
+        <div class="feature-icon">🚀</div>
+        <h3 class="feature-title">Fundraising Pipeline</h3>
+        <p class="feature-desc">Visual Kanban board for managing your entire fundraising process — from first contact to term sheet. Never let a warm lead go cold.</p>
+        <span class="feature-arrow">Learn more →</span>
+      </div>
+      <div class="feature-card" data-animate data-delay="100">
+        <div class="feature-icon">📬</div>
+        <h3 class="feature-title">Investor Updates</h3>
+        <p class="feature-desc">Beautiful, templated monthly updates sent automatically. Keep your investors informed and engaged with rich metrics and narrative reports.</p>
+        <span class="feature-arrow">Learn more →</span>
+      </div>
+      <div class="feature-card" data-animate data-delay="200">
+        <div class="feature-icon">🔒</div>
+        <h3 class="feature-title">Secure Data Room</h3>
+        <p class="feature-desc">Enterprise-grade secure vault for pitch decks, financials, cap tables, and due diligence documents. Granular permission controls per investor.</p>
+        <span class="feature-arrow">Learn more →</span>
+      </div>
+      <div class="feature-card" data-animate data-delay="300">
+        <div class="feature-icon">💡</div>
+        <h3 class="feature-title">AI Insights Engine</h3>
+        <p class="feature-desc">Proactive AI recommendations: which founders to follow up with, which metrics are trending, and what the market is telling you right now.</p>
+        <span class="feature-arrow">Learn more →</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SOLUTIONS — Investors & Founders
+═══════════════════════════════════════════════════════════ -->
+<section id="solutions" class="section-py bg-light" aria-labelledby="solutions-heading">
+  <div class="container">
+    <!-- Investors -->
+    <div class="solution-layout" style="margin-bottom:96px;" data-animate>
+      <div class="solution-copy">
+        <span class="solution-tag investor">💼 For Investors</span>
+        <h2 class="solution-title">Your entire portfolio,<br>always in focus</h2>
+        <p class="solution-desc">Stop switching between spreadsheets, emails, and dashboards. Launchpad gives investors a unified command center to track portfolio companies, discover new deals, and generate LP-ready reports.</p>
+        <div class="solution-list">
+          <div class="solution-item">
+            <span class="solution-item-icon investor">📈</span>
+            <div>
+              <div class="solution-item-title">Real-Time Portfolio Tracking</div>
+              <div class="solution-item-desc">Live KPI dashboards with automated data ingestion from 50+ integrations.</div>
+            </div>
+          </div>
+          <div class="solution-item">
+            <span class="solution-item-icon investor">🔍</span>
+            <div>
+              <div class="solution-item-title">Smart Startup Discovery</div>
+              <div class="solution-item-desc">AI-curated deal flow filtered by thesis, stage, sector, and traction signals.</div>
+            </div>
+          </div>
+          <div class="solution-item">
+            <span class="solution-item-icon investor">📋</span>
+            <div>
+              <div class="solution-item-title">Automated Due Diligence</div>
+              <div class="solution-item-desc">Structured workflows, document requests, and AI-generated company summaries.</div>
+            </div>
+          </div>
+        </div>
+        <a href="investors.html" class="btn btn-investor btn-lg">Explore Investor Tools →</a>
+      </div>
+      <div class="solution-visual">
+        <div class="solution-panel investor">
+          <div class="panel-header">
+            <div class="panel-title">Portfolio Overview</div>
+            <span class="panel-badge investor">Live</span>
+          </div>
+          <div class="panel-stat-row">
+            <div class="panel-stat">
+              <div class="panel-stat-val">$48M</div>
+              <div class="panel-stat-label">AUM</div>
+            </div>
+            <div class="panel-stat">
+              <div class="panel-stat-val">24</div>
+              <div class="panel-stat-label">Companies</div>
+            </div>
+            <div class="panel-stat">
+              <div class="panel-stat-val">3.2×</div>
+              <div class="panel-stat-label">MOIC</div>
+            </div>
+          </div>
+          <div class="panel-list">
+            <div class="panel-list-item">
+              <div class="panel-list-avatar">NT</div>
+              <div>
+                <div class="panel-list-name">NovaTech AI</div>
+                <div class="panel-list-meta">Series A · SaaS</div>
+              </div>
+              <span class="panel-list-tag green">▲ 34%</span>
+            </div>
+            <div class="panel-list-item">
+              <div class="panel-list-avatar" style="background:var(--investor-grad);">GF</div>
+              <div>
+                <div class="panel-list-name">GreenFlow</div>
+                <div class="panel-list-meta">Seed · CleanTech</div>
+              </div>
+              <span class="panel-list-tag blue">Due Diligence</span>
+            </div>
+            <div class="panel-list-item">
+              <div class="panel-list-avatar" style="background:var(--founder-grad);">BH</div>
+              <div>
+                <div class="panel-list-name">BioHealth Labs</div>
+                <div class="panel-list-meta">Series B · BioTech</div>
+              </div>
+              <span class="panel-list-tag purple">New Update</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Founders -->
+    <div class="solution-layout flip" data-animate>
+      <div class="solution-copy">
+        <span class="solution-tag founder">🌱 For Founders</span>
+        <h2 class="solution-title">Raise your round,<br>on your terms</h2>
+        <p class="solution-desc">Build a compelling profile, manage your fundraising pipeline, and connect with investors who are actively looking for companies like yours — all powered by AI that works for you 24/7.</p>
+        <div class="solution-list">
+          <div class="solution-item">
+            <span class="solution-item-icon founder">🗂️</span>
+            <div>
+              <div class="solution-item-title">Fundraising CRM</div>
+              <div class="solution-item-desc">Track every investor conversation from first outreach to signed term sheet.</div>
+            </div>
+          </div>
+          <div class="solution-item">
+            <span class="solution-item-icon founder">🤝</span>
+            <div>
+              <div class="solution-item-title">Warm Introductions</div>
+              <div class="solution-item-desc">Leverage the Launchpad network for curated, double opt-in investor intros.</div>
+            </div>
+          </div>
+          <div class="solution-item">
+            <span class="solution-item-icon founder">🤖</span>
+            <div>
+              <div class="solution-item-title">AI Pitch Coach</div>
+              <div class="solution-item-desc">Get instant feedback on your deck, narrative, and financial projections.</div>
+            </div>
+          </div>
+        </div>
+        <a href="founders.html" class="btn btn-founder btn-lg">Explore Founder Tools →</a>
+      </div>
+      <div class="solution-visual">
+        <div class="solution-panel founder">
+          <div class="panel-header">
+            <div class="panel-title">Fundraising Pipeline</div>
+            <span class="panel-badge founder">Series A</span>
+          </div>
+          <div class="panel-stat-row">
+            <div class="panel-stat">
+              <div class="panel-stat-val">$3.2M</div>
+              <div class="panel-stat-label">Committed</div>
+            </div>
+            <div class="panel-stat">
+              <div class="panel-stat-val">18</div>
+              <div class="panel-stat-label">Investors</div>
+            </div>
+            <div class="panel-stat">
+              <div class="panel-stat-val">67%</div>
+              <div class="panel-stat-label">Round Filled</div>
+            </div>
+          </div>
+          <div class="panel-list">
+            <div class="panel-list-item">
+              <div class="panel-list-avatar" style="background:var(--investor-grad);">AC</div>
+              <div>
+                <div class="panel-list-name">Apex Capital</div>
+                <div class="panel-list-meta">Lead · $1.5M</div>
+              </div>
+              <span class="panel-list-tag green">Term Sheet</span>
+            </div>
+            <div class="panel-list-item">
+              <div class="panel-list-avatar">HV</div>
+              <div>
+                <div class="panel-list-name">Harbor Ventures</div>
+                <div class="panel-list-meta">Follow-on · $500K</div>
+              </div>
+              <span class="panel-list-tag blue">DD Active</span>
+            </div>
+            <div class="panel-list-item">
+              <div class="panel-list-avatar" style="background:var(--founder-grad);">SV</div>
+              <div>
+                <div class="panel-list-name">Spark VC</div>
+                <div class="panel-list-meta">New · $750K ask</div>
+              </div>
+              <span class="panel-list-tag purple">First Meeting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════════════════ -->
+<section class="how-section" id="how-it-works" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:0" data-animate>
+      <div class="eyebrow" style="color:#818CF8;">How It Works</div>
+      <h2 class="section-heading" style="color:#fff;" id="how-heading">
+        Up and running in minutes
+      </h2>
+      <p class="section-sub" style="color:rgba(255,255,255,.5);margin:0 auto 48px;">
+        Whether you're raising capital or deploying it, Launchpad makes the process structured, transparent, and fast.
+      </p>
+    </div>
+    <div class="how-tabs">
+      <button class="how-tab" data-tab="investors">For Investors</button>
+      <button class="how-tab" data-tab="founders">For Founders</button>
+    </div>
+
+    <div class="how-content" data-tab="investors">
+      <div class="how-steps">
+        <div class="how-connector"></div>
+        <div class="how-step" data-animate data-delay="100">
+          <div class="step-num">1</div>
+          <h3 class="step-title">Set Your Thesis</h3>
+          <p class="step-desc">Define your investment criteria — stage, sector, check size, geography — and let AI learn your preferences over time.</p>
+        </div>
+        <div class="how-step" data-animate data-delay="200">
+          <div class="step-num">2</div>
+          <h3 class="step-title">Discover Deals</h3>
+          <p class="step-desc">Browse AI-curated deal flow matched to your thesis. Access full profiles, data rooms, and traction metrics in one place.</p>
+        </div>
+        <div class="how-step" data-animate data-delay="300">
+          <div class="step-num">3</div>
+          <h3 class="step-title">Track &amp; Engage</h3>
+          <p class="step-desc">Manage your pipeline with a CRM-style board. Run due diligence, request documents, and communicate directly with founders.</p>
+        </div>
+        <div class="how-step" data-animate data-delay="400">
+          <div class="step-num">4</div>
+          <h3 class="step-title">Monitor Portfolio</h3>
+          <p class="step-desc">Receive automated updates, track KPIs, and generate LP-ready reports. Your entire portfolio visibility in one dashboard.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-content" data-tab="founders">
+      <div class="how-steps">
+        <div class="how-connector"></div>
+        <div class="how-step" data-animate data-delay="100">
+          <div class="step-num">1</div>
+          <h3 class="step-title">Build Your Profile</h3>
+          <p class="step-desc">Create a compelling company profile with your story, metrics, team, and pitch materials. Takes under 30 minutes.</p>
+        </div>
+        <div class="how-step" data-animate data-delay="200">
+          <div class="step-num">2</div>
+          <h3 class="step-title">Get Matched</h3>
+          <p class="step-desc">Our AI scans thousands of investors and surfaces your top matches based on stage, sector, and thesis alignment.</p>
+        </div>
+        <div class="how-step" data-animate data-delay="300">
+          <div class="step-num">3</div>
+          <h3 class="step-title">Manage Outreach</h3>
+          <p class="step-desc">Track every investor conversation in your fundraising CRM. Never lose context or let a warm lead go cold.</p>
+        </div>
+        <div class="how-step" data-animate data-delay="400">
+          <div class="step-num">4</div>
+          <h3 class="step-title">Close Your Round</h3>
+          <p class="step-desc">Share data rooms, collect signatures, and coordinate closing logistics — all within Launchpad's secure environment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     AI SECTION
+═══════════════════════════════════════════════════════════ -->
+<section class="section-py bg-light" id="ai" aria-labelledby="ai-heading">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow">AI-Powered</div>
+      <h2 class="section-heading" id="ai-heading">
+        Your always-on<br>intelligence layer
+      </h2>
+      <p class="section-sub">
+        Launchpad's AI doesn't just surface data — it interprets it, learns your preferences, and delivers proactive recommendations that save you hours every week.
+      </p>
+    </div>
+    <div class="ai-layout">
+      <div class="ai-list">
+        <div class="ai-item">
+          <div class="ai-item-icon">🎯</div>
+          <div>
+            <div class="ai-item-title">Smart Investor Matching</div>
+            <div class="ai-item-desc">ML-powered compatibility scoring across 200+ signals for precise thesis alignment.</div>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-item-icon">📊</div>
+          <div>
+            <div class="ai-item-title">Predictive Analytics</div>
+            <div class="ai-item-desc">Forecast portfolio performance, churn risk, and fundraising timelines with confidence intervals.</div>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-item-icon">✍️</div>
+          <div>
+            <div class="ai-item-title">AI Pitch Coach</div>
+            <div class="ai-item-desc">Real-time feedback on your narrative, financials, and competitive positioning against market benchmarks.</div>
+          </div>
+        </div>
+        <div class="ai-item">
+          <div class="ai-item-icon">🔔</div>
+          <div>
+            <div class="ai-item-title">Proactive Alerts</div>
+            <div class="ai-item-desc">Intelligent notifications when portfolio metrics shift, investors open your deck, or new matching deals appear.</div>
+          </div>
+        </div>
+      </div>
+      <div class="ai-visual" data-animate>
+        <div class="ai-chat-msg">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-bubble bot">
+            Hi! I've analyzed your portfolio and found 3 opportunities worth your attention this week.
+          </div>
+        </div>
+        <div class="ai-insight-card">
+          <div class="ai-insight-icon">💡</div>
+          <div>
+            <strong>NovaTech AI</strong> — MRR growth accelerated to 28% MoM. Consider deploying follow-on capital before Series B terms are set.
+          </div>
+        </div>
+        <div class="ai-chat-msg user">
+          <div class="ai-avatar user">👤</div>
+          <div class="ai-bubble user">
+            Show me founders in fintech raising Series A with $500K+ MRR
+          </div>
+        </div>
+        <div class="ai-chat-msg">
+          <div class="ai-avatar">🤖</div>
+          <div class="ai-bubble bot">
+            Found <strong>12 matches</strong> aligned to your thesis. Top match: Cashflow Intelligence — 92% compatibility. Shall I request an intro?
+          </div>
+        </div>
+        <div class="ai-insight-card" style="background:var(--success-bg);border-color:var(--success);">
+          <div class="ai-insight-icon">✅</div>
+          <div style="color:var(--success);">
+            <strong>3 founders</strong> from last month's matches have hit their next milestone. Time to send follow-up notes.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TESTIMONIALS
+═══════════════════════════════════════════════════════════ -->
+<section class="section-py bg-white" id="testimonials" aria-labelledby="t-heading">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow">Customer Stories</div>
+      <h2 class="section-heading" id="t-heading">
+        Trusted by investors and<br>founders worldwide
+      </h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" data-animate data-delay="100">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span>
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <div class="t-quote">"</div>
+        <p class="t-text">Launchpad helped us close our Series A in just 3 months. The AI matching was eerily accurate — every investor we connected with was genuinely aligned with our vision. It's like having a full-time BD person on your team.</p>
+        <div class="t-author">
+          <div class="t-avatar">SC</div>
+          <div>
+            <div class="t-name">Sarah Chen</div>
+            <div class="t-role">CEO, TechVenture AI · Series A, $5M</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card featured" data-animate data-delay="200">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span>
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <div class="t-quote">"</div>
+        <p class="t-text">Our portfolio visibility has transformed completely. The automated reporting saves me 8 hours a week, and the AI surfaced three deals in Q3 we would have completely missed with our old process.</p>
+        <div class="t-author">
+          <div class="t-avatar">MR</div>
+          <div>
+            <div class="t-name">Michael Rodriguez</div>
+            <div class="t-role">Partner, Apex Capital · $120M AUM</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card" data-animate data-delay="300">
+        <div class="t-stars">
+          <span class="t-star">★</span><span class="t-star">★</span>
+          <span class="t-star">★</span><span class="t-star">★</span><span class="t-star">★</span>
+        </div>
+        <div class="t-quote">"</div>
+        <p class="t-text">As a first-time founder, I had no idea how to navigate VCs. Launchpad's pitch coach gave me the confidence to walk into any room. We went from zero to term sheet in 90 days. Absolutely game-changing.</p>
+        <div class="t-author">
+          <div class="t-avatar">JP</div>
+          <div>
+            <div class="t-name">Jennifer Park</div>
+            <div class="t-role">Founder, BioHealth Labs · Seed, $1.8M</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     PRICING
+═══════════════════════════════════════════════════════════ -->
+<section id="pricing" class="section-py bg-light" aria-labelledby="pricing-heading">
+  <div class="container">
+    <div class="section-header" data-animate>
+      <div class="eyebrow">Pricing</div>
+      <h2 class="section-heading" id="pricing-heading">Simple, transparent pricing</h2>
+      <p class="section-sub">Start free. Upgrade as you grow. No hidden fees, no surprise charges.</p>
+    </div>
+    <div class="pricing-toggle">
+      <span class="toggle-label">Monthly</span>
+      <div class="toggle-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle annual billing"></div>
+      <span class="toggle-label">Annual <span class="annual-badge">Save 20%</span></span>
+    </div>
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="pricing-card" data-animate data-delay="100">
+        <div class="pricing-tier">Founder Starter</div>
+        <div class="pricing-name">Free</div>
+        <div class="pricing-tagline">Perfect for early-stage exploration</div>
+        <div class="price-row">
+          <span class="price-cur">$</span><span class="price-num" data-monthly="0" data-annual="0">0</span><span class="price-period">/mo</span>
+        </div>
+        <ul class="pricing-features">
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Basic company profile</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5 investor connections/month</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Basic pitch deck upload</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Community access</li>
+        </ul>
+        <a href="#" class="btn btn-secondary btn-pricing">Get Started Free</a>
+      </div>
+      <!-- Growth (Popular) -->
+      <div class="pricing-card popular" data-animate data-delay="200">
+        <div class="popular-ribbon">Most Popular</div>
+        <div class="pricing-tier">Founder Growth</div>
+        <div class="pricing-name">Pro</div>
+        <div class="pricing-tagline">For founders actively fundraising</div>
+        <div class="price-row">
+          <span class="price-cur">$</span><span class="price-num" data-monthly="299" data-annual="239">299</span><span class="price-period">/mo</span>
+        </div>
+        <ul class="pricing-features">
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Everything in Free</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited investor connections</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Full fundraising CRM</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>AI Pitch Coach</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Secure data room (10GB)</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Priority support</li>
+        </ul>
+        <a href="#" class="btn btn-primary btn-pricing">Start 14-Day Trial</a>
+      </div>
+      <!-- Enterprise -->
+      <div class="pricing-card" data-animate data-delay="300">
+        <div class="pricing-tier">Investor Professional</div>
+        <div class="pricing-name">Investor</div>
+        <div class="pricing-tagline">For VCs and active angel investors</div>
+        <div class="price-row">
+          <span class="price-cur">$</span><span class="price-num" data-monthly="999" data-annual="799">999</span><span class="price-period">/mo</span>
+        </div>
+        <ul class="pricing-features">
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Unlimited deal flow access</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Full portfolio dashboard</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>AI deal flow analysis</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>LP reporting suite</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Team collaboration (5 seats)</li>
+          <li class="p-feat"><span class="p-check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dedicated account manager</li>
+        </ul>
+        <a href="#" class="btn btn-secondary btn-pricing">Book a Demo</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:28px;font-size:14px;color:var(--text-muted);">
+      Need a custom plan for your fund? <a href="#" style="color:var(--primary);font-weight:600;">Talk to our team →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════════════════ -->
+<section id="faq" class="section-py bg-white" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="faq-layout">
+      <div data-animate>
+        <div class="eyebrow">FAQ</div>
+        <h2 class="faq-side-title" id="faq-heading">Everything you need to know</h2>
+        <p class="faq-side-desc">Can't find the answer you're looking for? Our team is happy to help.</p>
+        <a href="#" class="btn btn-secondary">Contact Support</a>
+      </div>
+      <div class="faq-list" data-animate data-delay="200">
+        <div class="faq-item">
+          <div class="faq-q">How does Launchpad's investor matching work?<span class="faq-toggle">+</span></div>
+          <div class="faq-a"><p>Our AI analyzes your company profile across 200+ data points — including sector, stage, traction, team background, and growth trajectory — and cross-references this with each investor's stated thesis, portfolio history, and check size preferences. Matches are ranked by compatibility score, and improve over time as you interact with the platform.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is my data secure and confidential?<span class="faq-toggle">+</span></div>
+          <div class="faq-a"><p>Absolutely. Launchpad is SOC 2 Type II certified and uses AES-256 encryption for all stored data. Your pitch materials and financials are only visible to investors you explicitly grant access to. We never share your data with third parties, and you can revoke access at any time from your dashboard.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I try Launchpad before paying?<span class="faq-toggle">+</span></div>
+          <div class="faq-a"><p>Yes! Our Free plan is available indefinitely — no credit card required. For paid plans, we offer a 14-day free trial with full access to all features. Enterprise plans include a complimentary proof-of-concept period.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What types of investors are on Launchpad?<span class="faq-toggle">+</span></div>
+          <div class="faq-a"><p>Our platform includes over 2,500 verified investors spanning venture capital firms, angel investors, family offices, and corporate venture arms. They range from pre-seed angels writing $25K checks to multi-stage VCs deploying $50M+. All investors are verified and actively looking for investments.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How long does it typically take to raise through Launchpad?<span class="faq-toggle">+</span></div>
+          <div class="faq-a"><p>Timelines vary by stage and market conditions, but founders on Launchpad close rounds 40% faster than industry benchmarks. Seed rounds typically close in 45–90 days; Series A in 90–180 days. Our pipeline management tools and AI coaching are specifically designed to accelerate the process at each stage.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Do you charge a success fee when a deal closes?<span class="faq-toggle">+</span></div>
+          <div class="faq-a"><p>No. Launchpad charges a flat subscription fee only. We never take a percentage of funds raised or deployed. Our incentive is entirely aligned with making the platform as valuable as possible — not skimming from your deal economics.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════════════════════ -->
+<section class="cta-section" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-inner" data-animate>
+      <h2 class="cta-title">Ready to accelerate<br>your journey?</h2>
+      <p class="cta-desc">Join 10,000+ founders and investors already using Launchpad to build stronger relationships and close better deals.</p>
+      <div class="cta-actions">
+        <a href="founders.html" class="btn btn-white btn-xl">Start as a Founder</a>
+        <a href="investors.html" class="btn btn-outline-white btn-xl">Join as an Investor</a>
+      </div>
+      <p class="cta-note">Free to start · No credit card required · SOC 2 certified</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-logo">
+          <div class="footer-logo-mark">
+            <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" fill="white"/></svg>
+          </div>
+          Launchpad
+        </div>
+        <p class="footer-tagline">The AI-powered platform connecting ambitious founders with the investors who can take them further.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-link" aria-label="GitHub">⌥</a>
+          <a href="#" class="social-link" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-hd">Product</div>
+        <div class="footer-links">
+          <a href="#features" class="footer-link">Features</a>
+          <a href="#pricing" class="footer-link">Pricing</a>
+          <a href="#" class="footer-link">Changelog</a>
+          <a href="#" class="footer-link">Roadmap</a>
+          <a href="#" class="footer-link">API Docs</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-hd">Solutions</div>
+        <div class="footer-links">
+          <a href="investors.html" class="footer-link">For Investors</a>
+          <a href="founders.html" class="footer-link">For Founders</a>
+          <a href="#" class="footer-link">Enterprise</a>
+          <a href="#" class="footer-link">Accelerators</a>
+          <a href="#" class="footer-link">VC Firms</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-hd">Company</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">About Us</a>
+          <a href="#" class="footer-link">Blog</a>
+          <a href="#" class="footer-link">Careers</a>
+          <a href="#" class="footer-link">Press Kit</a>
+          <a href="#" class="footer-link">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-hd">Resources</div>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Help Center</a>
+          <a href="#" class="footer-link">Community</a>
+          <a href="#faq" class="footer-link">FAQ</a>
+          <a href="#" class="footer-link">Webinars</a>
+          <a href="#" class="footer-link">Integrations</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Launchpad, Inc. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
