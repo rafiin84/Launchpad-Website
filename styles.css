@@ -369,7 +369,7 @@ input, textarea { font: inherit; }
    ============================================================ */
 .hero {
   padding: 152px 0 88px;
-  background: linear-gradient(155deg, #0B0F1A 0%, #151B35 45%, #1A1040 100%);
+  background: linear-gradient(155deg, #FAFBFF 0%, #F0F4FF 50%, #EEF1FD 100%);
   position: relative;
   overflow: hidden;
   min-height: 100vh;
@@ -406,11 +406,11 @@ input, textarea { font: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(79,70,229,.12);
-  border: 1px solid rgba(79,70,229,.25);
+  background: rgba(79,70,229,.08);
+  border: 1px solid rgba(79,70,229,.2);
   padding: 6px 14px 6px 8px;
   border-radius: var(--r-full);
-  color: #A5B4FC;
+  color: var(--primary);
   font-size: 13px;
   font-weight: 500;
   margin-bottom: 24px;
@@ -431,7 +431,7 @@ input, textarea { font: inherit; }
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -1.5px;
-  color: #fff;
+  color: var(--dark);
   margin-bottom: 22px;
 }
 .hero-title .hl {
@@ -442,7 +442,7 @@ input, textarea { font: inherit; }
 }
 .hero-desc {
   font-size: 18px;
-  color: rgba(255,255,255,.6);
+  color: var(--text-secondary);
   line-height: 1.75;
   max-width: 500px;
   margin-bottom: 40px;
@@ -456,7 +456,7 @@ input, textarea { font: inherit; }
 .hero-trust {
   margin-top: 44px;
   padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,.08);
+  border-top: 1px solid var(--border);
   display: flex;
   align-items: center;
   gap: 14px;
@@ -469,25 +469,24 @@ input, textarea { font: inherit; }
 .trust-avatar {
   width: 30px; height: 30px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,.15);
+  border: 2px solid #fff;
   background: var(--gradient);
   display: flex; align-items: center; justify-content: center;
   font-size: 10px; font-weight: 700; color: #fff;
   margin-left: -8px;
 }
 .trust-avatar:first-child { margin-left: 0; }
-.trust-text { font-size: 13px; color: rgba(255,255,255,.45); }
-.trust-text strong { color: rgba(255,255,255,.8); }
+.trust-text { font-size: 13px; color: var(--text-secondary); }
+.trust-text strong { color: var(--dark); }
 
 /* Hero visual / dashboard mockup */
 .hero-visual { position: relative; }
 .hero-mockup {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.1);
+  background: #fff;
+  border: 1px solid var(--border);
   border-radius: var(--r-xl);
   padding: 20px;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 24px 80px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.05);
+  box-shadow: var(--shadow-xl), 0 2px 8px rgba(0,0,0,.06);
 }
 .mockup-bar {
   display: flex;
@@ -495,7 +494,7 @@ input, textarea { font: inherit; }
   gap: 6px;
   margin-bottom: 18px;
   padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255,255,255,.07);
+  border-bottom: 1px solid var(--border);
 }
 .mockup-dot {
   width: 10px; height: 10px; border-radius: 50%;
@@ -506,7 +505,7 @@ input, textarea { font: inherit; }
 .mockup-title-bar {
   flex: 1;
   height: 10px;
-  background: rgba(255,255,255,.07);
+  background: var(--bg-gray);
   border-radius: 5px;
   margin: 0 20px;
 }
@@ -517,14 +516,14 @@ input, textarea { font: inherit; }
   margin-bottom: 14px;
 }
 .mock-metric {
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.07);
+  background: var(--bg-light);
+  border: 1px solid var(--border);
   border-radius: var(--r-md);
   padding: 14px;
 }
 .mock-metric-label {
   font-size: 10px;
-  color: rgba(255,255,255,.35);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: .6px;
   margin-bottom: 6px;
@@ -533,7 +532,7 @@ input, textarea { font: inherit; }
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  color: var(--dark);
   margin-bottom: 4px;
 }
 .mock-metric-chg {
@@ -542,8 +541,8 @@ input, textarea { font: inherit; }
 }
 .mock-metric-chg.neg { color: #F87171; }
 .mock-chart {
-  background: rgba(255,255,255,.02);
-  border: 1px solid rgba(255,255,255,.07);
+  background: var(--bg-light);
+  border: 1px solid var(--border);
   border-radius: var(--r-md);
   padding: 14px;
   margin-bottom: 12px;
@@ -556,11 +555,11 @@ input, textarea { font: inherit; }
 .mock-chart-label {
   font-size: 11px;
   font-weight: 500;
-  color: rgba(255,255,255,.5);
+  color: var(--text-secondary);
 }
 .mock-chart-period {
   font-size: 10px;
-  color: rgba(255,255,255,.25);
+  color: var(--text-muted);
 }
 .mock-bars {
   display: flex;
@@ -583,7 +582,7 @@ input, textarea { font: inherit; }
   align-items: center;
   gap: 10px;
   padding: 9px 10px;
-  background: rgba(255,255,255,.03);
+  background: var(--bg-light);
   border-radius: var(--r-sm);
 }
 .mock-activity-dot {
@@ -597,12 +596,12 @@ input, textarea { font: inherit; }
 .mock-activity-line {
   height: 8px;
   border-radius: 4px;
-  background: rgba(255,255,255,.1);
+  background: var(--border);
   flex: 1;
 }
 .mock-activity-time {
   font-size: 10px;
-  color: rgba(255,255,255,.25);
+  color: var(--text-muted);
   white-space: nowrap;
 }
 
@@ -640,9 +639,9 @@ input, textarea { font: inherit; }
    8. STATS SECTION
    ============================================================ */
 .stats-section {
-  background: #0B0F1A;
-  border-top: 1px solid rgba(255,255,255,.04);
-  border-bottom: 1px solid rgba(255,255,255,.04);
+  background: var(--bg-light);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   padding: 56px 0;
 }
 .stats-grid {
@@ -661,7 +660,7 @@ input, textarea { font: inherit; }
   top: 20%; bottom: 20%;
   right: 0;
   width: 1px;
-  background: rgba(255,255,255,.06);
+  background: var(--border);
 }
 .stat-item:last-child::after { display: none; }
 .stat-number {
@@ -675,8 +674,8 @@ input, textarea { font: inherit; }
   line-height: 1;
   margin-bottom: 8px;
 }
-.stat-label { font-size: 15px; color: rgba(255,255,255,.45); }
-.stat-sub   { font-size: 12px; color: rgba(255,255,255,.22); margin-top: 3px; }
+.stat-label { font-size: 15px; color: var(--text-secondary); }
+.stat-sub   { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
 
 /* ============================================================
    9. FEATURE CARDS
@@ -893,7 +892,7 @@ input, textarea { font: inherit; }
    ============================================================ */
 .how-section {
   padding: var(--section-py) 0;
-  background: #0B0F1A;
+  background: var(--bg-light);
   position: relative;
   overflow: hidden;
 }
@@ -901,7 +900,7 @@ input, textarea { font: inherit; }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(79,70,229,.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(79,70,229,.05) 0%, transparent 70%);
   pointer-events: none;
 }
 .how-tabs {
@@ -917,8 +916,8 @@ input, textarea { font: inherit; }
   border-radius: var(--r-full);
   font-size: 14px;
   font-weight: 600;
-  border: 1.5px solid rgba(255,255,255,.12);
-  color: rgba(255,255,255,.45);
+  border: 1.5px solid var(--border);
+  color: var(--text-secondary);
   background: transparent;
   transition: all var(--t) var(--ease);
 }
@@ -929,8 +928,8 @@ input, textarea { font: inherit; }
   box-shadow: 0 4px 20px rgba(79,70,229,.45);
 }
 .how-tab:hover:not(.active) {
-  border-color: rgba(255,255,255,.25);
-  color: rgba(255,255,255,.7);
+  border-color: var(--primary-light);
+  color: var(--primary);
 }
 .how-content { display: none; position: relative; z-index: 1; }
 .how-content.active {
@@ -971,8 +970,8 @@ input, textarea { font: inherit; }
   position: relative;
   z-index: 1;
 }
-.step-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 10px; }
-.step-desc  { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.65; }
+.step-title { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+.step-desc  { font-size: 14px; color: var(--text-secondary); line-height: 1.65; }
 
 /* ============================================================
    12. AI SECTION
@@ -1473,7 +1472,7 @@ input, textarea { font: inherit; }
    19. PAGE-SPECIFIC HERO VARIANTS
    ============================================================ */
 .hero.investor-hero {
-  background: linear-gradient(155deg, #0B0F1A 0%, #0D1F3A 45%, #0F2952 100%);
+  background: linear-gradient(155deg, #F5F9FF 0%, #EBF3FF 50%, #E0EDFF 100%);
 }
 .hero.investor-hero .hero-title .hl {
   background: linear-gradient(135deg, #60A5FA 0%, #93C5FD 50%, #7DD3FC 100%);
@@ -1482,7 +1481,7 @@ input, textarea { font: inherit; }
   background-clip: text;
 }
 .hero.founder-hero {
-  background: linear-gradient(155deg, #0B0F1A 0%, #0D2A20 45%, #0F3325 100%);
+  background: linear-gradient(155deg, #F2FDF9 0%, #E8FDF4 50%, #DCFCE8 100%);
 }
 .hero.founder-hero .hero-title .hl {
   background: linear-gradient(135deg, #34D399 0%, #6EE7B7 50%, #A7F3D0 100%);
@@ -1491,15 +1490,15 @@ input, textarea { font: inherit; }
   background-clip: text;
 }
 .hero.investor-hero .hero-badge {
-  background: rgba(37,99,235,.12);
-  border-color: rgba(37,99,235,.25);
-  color: #93C5FD;
+  background: rgba(37,99,235,.08);
+  border-color: rgba(37,99,235,.2);
+  color: var(--investor);
 }
 .hero.investor-hero .hero-badge-dot { background: #60A5FA; }
 .hero.founder-hero .hero-badge {
-  background: rgba(5,150,105,.12);
-  border-color: rgba(5,150,105,.25);
-  color: #6EE7B7;
+  background: rgba(5,150,105,.08);
+  border-color: rgba(5,150,105,.2);
+  color: var(--founder);
 }
 .hero.founder-hero .hero-badge-dot { background: #34D399; }
 
