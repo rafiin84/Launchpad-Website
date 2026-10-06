@@ -1,0 +1,84 @@
+/* Zoho VC CRM — product mockups & shared page components */
+.nav-logo-mark, .footer-logo-mark { background: #0B0B0F; }
+.hero { min-height: auto; }
+
+.tag { display:inline-block; padding:2px 9px; border-radius:999px; font-size:11px; font-weight:600; background:#F1F5F9; color:#475569; }
+.tag.preseed { background:#EFF6FF; color:#2563EB; }
+.tag.seriesa { background:#EEF2FF; color:#4338CA; }
+.tag.seriesb { background:#F5F3FF; color:#7C3AED; }
+.tag.approved, .tag.cleared { background:#F0FDF4; color:#16A34A; }
+.tag.rejected { background:#FEF2F2; color:#DC2626; }
+
+/* App window */
+.aw { background:#fff; border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow-xl); overflow:hidden; display:grid; grid-template-columns:168px 1fr; font-size:12px; text-align:left; }
+.aw-side { background:#fff; border-right:1px solid var(--border); padding:14px 10px; display:flex; flex-direction:column; gap:3px; }
+.aw-brand { display:flex; align-items:center; gap:8px; font-weight:800; font-size:13px; color:var(--dark); padding:2px 6px 12px; }
+.aw-brand i { width:22px; height:22px; border-radius:6px; background:#0B0B0F; display:inline-block; }
+.aw-nav { padding:8px 10px; border-radius:8px; color:#475569; font-weight:500; }
+.aw-nav.on { background:#0B0B0F; color:#fff; }
+.aw-main { background:#FAFAFC; padding:16px; min-width:0; }
+.aw-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.aw-title { font-weight:700; font-size:14px; color:var(--dark); }
+.aw-user { font-size:11px; color:var(--text-muted); }
+.kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px; }
+.kpi { background:#fff; border:1px solid var(--border); border-radius:10px; padding:10px; }
+.kpi.dark { background:#0B0B0F; color:#fff; border-color:#0B0B0F; }
+.kpi b { display:block; font-size:16px; font-family:var(--font-display); }
+.kpi span { font-size:10px; color:var(--text-muted); }
+.kpi.dark span { color:#9CA3AF; }
+.rows { display:flex; flex-direction:column; gap:6px; }
+.row { background:#fff; border:1px solid var(--border); border-radius:10px; padding:9px 10px; display:flex; align-items:center; gap:8px; }
+.row .nm { font-weight:600; color:var(--dark); font-size:12px; }
+.row .mt { font-size:10px; color:var(--text-muted); }
+.row .end { margin-left:auto; display:flex; align-items:center; gap:8px; font-weight:700; color:var(--dark); }
+.ck { display:inline-flex; gap:3px; }
+.ck i { width:14px; height:14px; border-radius:4px; background:#DCFCE7; border:1px solid #BBF7D0; display:inline-block; }
+.logo-sq { width:28px; height:28px; border-radius:8px; background:#F1F5F9; flex-shrink:0; }
+
+/* Detail / pipeline */
+.app-banner { background:linear-gradient(135deg,#4F46E5,#9333EA); border-radius:16px; color:#fff; padding:22px 26px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+.app-banner h3 { font-family:var(--font-display); font-size:22px; margin-bottom:4px; }
+.app-banner p { opacity:.85; font-size:13px; }
+.ask { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); border-radius:12px; padding:10px 18px; text-align:center; }
+.ask small { display:block; font-size:10px; letter-spacing:.8px; opacity:.85; }
+.ask b { font-size:22px; font-family:var(--font-display); }
+.pipe { background:#fff; border:1px solid var(--border); border-radius:16px; padding:22px; box-shadow:var(--shadow-lg); }
+.pipe h4 { font-family:var(--font-display); font-size:17px; color:var(--dark); }
+.pipe > p { font-size:13px; color:var(--text-secondary); margin-bottom:14px; }
+.bar { height:6px; background:#E5E7EB; border-radius:99px; overflow:hidden; margin:10px 0 6px; }
+.bar i { display:block; height:100%; background:#22C55E; }
+.bar-l { display:flex; justify-content:space-between; font-size:11px; color:#16A34A; margin-bottom:14px; }
+.lvl { display:flex; gap:12px; padding:12px 0; border-top:1px solid var(--border-light); }
+.lvl-dot { width:26px; height:26px; border-radius:50%; background:#22C55E; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+.lvl b { font-size:14px; color:var(--dark); }
+.lvl p { font-size:12px; color:var(--text-secondary); margin-top:2px; }
+.lvl .star { color:#F59E0B; font-weight:700; }
+.decision { background:#F0FDF4; border:1px solid #BBF7D0; border-radius:10px; padding:10px 12px; font-size:12px; color:#166534; margin-bottom:6px; }
+
+.mod-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.split { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; margin-bottom:88px; }
+.split:last-child { margin-bottom:0; }
+.split.flip > :first-child { order:2; }
+.split h3 { font-family:var(--font-display); font-size:clamp(24px,3vw,34px); font-weight:800; color:var(--dark); line-height:1.2; margin-bottom:14px; }
+.split p.lead { font-size:16px; color:var(--text-secondary); line-height:1.75; margin-bottom:22px; }
+.ticks { display:flex; flex-direction:column; gap:10px; list-style:none; padding:0; }
+.ticks li { display:flex; gap:10px; font-size:14px; color:var(--text-secondary); }
+.ticks li::before { content:'✓'; width:20px; height:20px; border-radius:50%; background:var(--primary-bg); color:var(--primary); font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+.founder-page .ticks li::before { background:var(--founder-bg); color:var(--founder); }
+.cta-row { margin-top:26px; display:flex; gap:12px; flex-wrap:wrap; }
+.facts { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
+.fact b { display:block; font-family:var(--font-display); font-size:34px; font-weight:800; color:var(--dark); }
+.fact span { font-size:14px; color:var(--text-secondary); }
+
+@media (max-width:1024px) {
+  .mod-grid { grid-template-columns:1fr 1fr; }
+  .split { grid-template-columns:1fr; gap:36px; }
+  .split.flip > :first-child { order:0; }
+  .facts { grid-template-columns:1fr 1fr; }
+}
+@media (max-width:640px) {
+  .mod-grid { grid-template-columns:1fr; }
+  .aw { grid-template-columns:1fr; }
+  .aw-side { display:none; }
+  .kpis { grid-template-columns:1fr 1fr; }
+}
