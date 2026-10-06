@@ -82,3 +82,20 @@
   .aw-side { display:none; }
   .kpis { grid-template-columns:1fr 1fr; }
 }
+
+/* Pitch Your Idea modal */
+.nav-actions .btn, .mobile-actions .btn { white-space:nowrap; }
+.pitch-modal { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:16px; }
+.pitch-modal.open { display:flex; }
+.pitch-backdrop { position:absolute; inset:0; background:rgba(15,23,42,.55); }
+.pitch-dialog { position:relative; background:#fff; border-radius:16px; width:100%; max-width:520px; max-height:92vh; overflow:auto; padding:32px; box-shadow:var(--shadow-xl); }
+.pitch-dialog h2 { font-family:var(--font-display); font-size:24px; color:var(--dark); margin-bottom:20px; }
+.pitch-x { position:absolute; top:12px; right:16px; border:0; background:none; font-size:28px; line-height:1; cursor:pointer; color:var(--text-muted); }
+.pitch-dialog form { display:flex; flex-direction:column; gap:14px; }
+.pitch-dialog input, .pitch-dialog select, .pitch-dialog textarea { font:inherit; font-size:15px; padding:14px 16px; border:1px solid #D1D5DB; border-radius:10px; background:#fff; color:var(--dark); width:100%; }
+.pitch-dialog textarea { resize:vertical; }
+.pitch-dialog input:focus, .pitch-dialog select:focus, .pitch-dialog textarea:focus { outline:2px solid var(--primary); outline-offset:-1px; border-color:transparent; }
+.pitch-phone { display:grid; grid-template-columns:110px 1fr; gap:12px; }
+.pitch-err { color:#DC2626; font-size:13px; }
+.pitch-done { text-align:center; padding:24px 0; }
+.pitch-done h3 { font-family:var(--font-display); font-size:22px; margin-bottom:8px; }

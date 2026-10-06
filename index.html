@@ -22,6 +22,7 @@
       <a href="founders.html" class="nav-link founder">For Founders</a>
     </nav>
     <div class="nav-actions">
+      <button type="button" class="btn btn-secondary" data-pitch-open>Pitch Your Idea</button>
       <a href="#" class="btn btn-primary">Sign In</a>
     </div>
     <button class="nav-hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -33,7 +34,7 @@
   <a href="investors.html" class="mobile-nav-link">For Investors</a>
   <a href="founders.html" class="mobile-nav-link">For Founders</a>
   <div class="mobile-divider"></div>
-  <div class="mobile-actions"><a href="#" class="btn btn-primary">Sign In</a></div>
+  <div class="mobile-actions"><button type="button" class="btn btn-secondary" data-pitch-open>Pitch Your Idea</button><a href="#" class="btn btn-primary">Sign In</a></div>
 </div>
 
 <section class="hero" aria-labelledby="hero-title"><div class="hero-grid-bg"></div><div class="hero-glow"></div><div class="container"><div class="hero-layout">
@@ -92,6 +93,26 @@
   <div class="cta-actions"><a href="founders.html" class="btn btn-primary btn-xl">I'm a Founder</a><a href="investors.html" class="btn btn-secondary btn-xl">I'm an Investor</a></div>
   <p class="cta-note">Access to Zoho VC CRM is by invitation · Sign in with your invited account</p>
 </div></div></section>
+<div class="pitch-modal" id="pitch-modal" aria-hidden="true">
+  <div class="pitch-backdrop" data-pitch-close></div>
+  <div class="pitch-dialog" role="dialog" aria-modal="true" aria-labelledby="pitch-title">
+    <button type="button" class="pitch-x" aria-label="Close" data-pitch-close>&times;</button>
+    <h2 id="pitch-title">Pitch Your Idea</h2>
+    <form id="pitch-form" novalidate>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <div class="pitch-phone">
+        <select name="code" aria-label="Country code"><option>IN +91</option><option>US +1</option><option>GB +44</option><option>AE +971</option><option>SG +65</option><option>AU +61</option></select>
+        <input type="tel" name="mobile" placeholder="Mobile Number" required />
+      </div>
+      <input type="text" name="business" placeholder="Business Name" required />
+      <textarea name="message" placeholder="Your Message" rows="5"></textarea>
+      <p class="pitch-err" hidden>Please fill in all required fields.</p>
+      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+    <div class="pitch-done" hidden><h3>Thank you!</h3><p>We've received your pitch and will be in touch.</p></div>
+  </div>
+</div>
 <footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-grid" style="grid-template-columns:2fr 1fr 1fr 1fr;">

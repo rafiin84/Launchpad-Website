@@ -158,6 +158,36 @@
     bar.style.height = (barH[i % barH.length]) + '%';
   });
 
+  // ── Pitch Your Idea modal ──────────────────────────────────
+  const pitch = document.getElementById('pitch-modal');
+  if (pitch) {
+    const form = document.getElementById('pitch-form');
+    const done = pitch.querySelector('.pitch-done');
+    const err  = pitch.querySelector('.pitch-err');
+    const setOpen = (open) => {
+      pitch.classList.toggle('open', open);
+      pitch.setAttribute('aria-hidden', String(!open));
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        form.hidden = false; done.hidden = true; err.hidden = true; form.reset();
+        form.querySelector('input').focus();
+      }
+    };
+    document.querySelectorAll('[data-pitch-open]').forEach((b) => b.addEventListener('click', () => {
+      drawer?.classList.remove('open');
+      setOpen(true);
+    }));
+    pitch.querySelectorAll('[data-pitch-close]').forEach((b) => b.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const ok = ['name', 'email', 'mobile', 'business'].every((n) => form.elements[n].value.trim());
+      err.hidden = ok;
+      if (!ok) return;
+      form.hidden = true; done.hidden = false;
+    });
+  }
+
   // ── Active nav link ────────────────────────────────────────
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-link[href]').forEach((link) => {
