@@ -74,3 +74,9 @@ h1,h2,h3,h4 { font-family:var(--font); }
 .contact-line { text-align:center; margin-top:40px; font-size:14px; color:var(--text-secondary); }
 .contact-line a { color:var(--primary); font-weight:700; }
 @media (max-width:1024px){ .pillars,.principles{grid-template-columns:1fr} .topbar{font-size:12px} }
+
+/* Home hero photo (Unsplash) */
+.hero-photo { background:url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=70') center/cover no-repeat; }
+.hero-photo::before { content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.9) 35%,rgba(238,240,255,.82) 70%,rgba(255,255,255,.96) 100%); }
+.hero-photo .hero-grid-bg, .hero-photo .hero-glow { z-index:0; }
