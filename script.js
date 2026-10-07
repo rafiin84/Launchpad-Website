@@ -188,6 +188,14 @@
     });
   }
 
+  // ── Hero product tabs ──────────────────────────────────────
+  document.querySelectorAll('[data-hero-tab]').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('[data-hero-tab]').forEach((t) => t.classList.toggle('on', t === tab));
+      document.querySelectorAll('[data-hero-panel]').forEach((p) => { p.hidden = p.dataset.heroPanel !== tab.dataset.heroTab; });
+    });
+  });
+
   // ── Active nav link ────────────────────────────────────────
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-link[href]').forEach((link) => {
