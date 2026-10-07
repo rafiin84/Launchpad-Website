@@ -107,3 +107,22 @@ body > section.stats-section { background:#fff; }
 /* keep cards crisp on tinted bands */
 .feature-card, .pillar, .principle, .pipe, .faq-item { background:#fff; }
 .faq-item { border-radius:12px; }
+
+/* Dark navy band + vivid blue closing band (Zoho Classes style) */
+body > section.sec-dark { background:radial-gradient(ellipse 80% 60% at 50% 0%,#2b2570 0%,#14123a 70%); border-top:0; color:#fff; }
+.sec-dark .eyebrow { color:#a5b4fc; }
+.sec-dark .section-heading, .sec-dark blockquote { color:#fff; }
+.sec-dark .section-sub, .sec-dark .quote-band p, .sec-dark .contact-line, .sec-dark .fact span { color:rgba(255,255,255,.75); }
+.sec-dark .fact b { color:#fff; }
+.sec-dark .contact-line a { color:#a5b4fc; }
+.sec-dark .pillar, .sec-dark .principle { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.14); }
+.sec-dark .pillar h3, .sec-dark .principle { color:#fff; }
+.sec-dark .pillar p { color:rgba(255,255,255,.75); }
+.sec-dark .principle::before { background:rgba(165,180,252,.2); color:#c7d2fe; }
+.sec-dark .pillar:hover { box-shadow:0 12px 40px rgba(0,0,0,.35); }
+
+body > section.cta-section { background:linear-gradient(135deg,#003acc 0%,#5448CE 60%,#7C3AED 100%); color:#fff; }
+.cta-section .cta-title { color:#fff; }
+.cta-section .cta-desc, .cta-section .cta-note { color:rgba(255,255,255,.85); }
+.cta-section .btn-secondary { color:#fff; border-color:rgba(255,255,255,.6); }
+.cta-section .btn-secondary:hover { background:rgba(255,255,255,.12); border-color:#fff; }
