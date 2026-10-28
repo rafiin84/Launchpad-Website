@@ -230,7 +230,7 @@ body > section.bundle-section { background:linear-gradient(180deg,#F4F2FD 0%,#ff
 @media (max-width:640px){ .mx-grid { grid-template-columns:1fr; } }
 
 /* Modules slider */
-.slides { margin-bottom:72px; }
+.slides { margin-bottom:0; }
 .slide-tabs { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:40px; }
 .slide-tab { border:1px solid var(--border); background:#fff; color:#374151; font:600 14px/1 inherit; padding:11px 18px; border-radius:99px; cursor:pointer; transition:all .2s; }
 .slide-tab:hover { border-color:var(--primary); color:var(--primary); }
