@@ -216,11 +216,37 @@
         dots.appendChild(d);
       }
       prev.disabled = i === 0; next.disabled = i === max();
+      document.querySelector('.bundle-nav').hidden = max() <= 0;
     }
     prev.addEventListener('click', () => { i--; render(); });
     next.addEventListener('click', () => { i++; render(); });
     addEventListener('resize', render);
     render();
+  })();
+
+  // ── Modules slider ─────────────────────────────────────────
+  (function () {
+    const root = document.getElementById('slides');
+    if (!root) return;
+    const tabs = [...root.querySelectorAll('.slide-tab')], panels = [...root.querySelectorAll('.slide')];
+    const dots = document.getElementById('slide-dots');
+    let i = 0;
+    function go(n) {
+      i = (n + panels.length) % panels.length;
+      tabs.forEach((t, k) => { t.classList.toggle('on', k === i); t.setAttribute('aria-selected', k === i); });
+      panels.forEach((p, k) => p.classList.toggle('on', k === i));
+      [...dots.children].forEach((d, k) => d.classList.toggle('on', k === i));
+    }
+    panels.forEach((_, k) => {
+      const d = document.createElement('button');
+      d.type = 'button'; d.className = 'bundle-dot'; d.setAttribute('aria-label', 'Go to slide ' + (k + 1));
+      d.addEventListener('click', () => go(k));
+      dots.appendChild(d);
+    });
+    tabs.forEach((t, k) => t.addEventListener('click', () => go(k)));
+    document.getElementById('slide-prev').addEventListener('click', () => go(i - 1));
+    document.getElementById('slide-next').addEventListener('click', () => go(i + 1));
+    go(0);
   })();
 
   // ── Active nav link ────────────────────────────────────────
