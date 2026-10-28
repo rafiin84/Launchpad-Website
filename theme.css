@@ -252,3 +252,8 @@ body > section.bundle-section { background:linear-gradient(180deg,#F4F2FD 0%,#ff
 .mx-head h3 { font-size:clamp(22px,2.6vw,30px); font-weight:800; color:#111; }
 @media (max-width:900px){ .slide.on { grid-template-columns:1fr; gap:32px; } }
 .bundle-nav[hidden] { display:none; }
+.bundle-track .mx-card { flex:0 0 calc((100% - 48px)/3); }
+.bundle-section .bundle-dots { display:none; }
+.bundle-viewport { padding:12px 4px; margin:-12px -4px; }
+@media (max-width:1024px){ .bundle-track .mx-card { flex-basis:calc((100% - 24px)/2); } }
+@media (max-width:640px){ .bundle-track .mx-card { flex-basis:100%; } }
