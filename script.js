@@ -196,6 +196,33 @@
     });
   });
 
+  // ── Bundle carousel ────────────────────────────────────────
+  (function () {
+    const track = document.getElementById('bundle-track');
+    if (!track) return;
+    const cards = track.children, dots = document.getElementById('bundle-dots');
+    const prev = document.getElementById('bundle-prev'), next = document.getElementById('bundle-next');
+    let i = 0;
+    const perView = () => (innerWidth <= 640 ? 1 : innerWidth <= 1024 ? 2 : 4);
+    const max = () => cards.length - perView();
+    function render() {
+      i = Math.max(0, Math.min(i, max()));
+      track.style.transform = 'translateX(-' + i * (cards[0].offsetWidth + 24) + 'px)';
+      dots.innerHTML = '';
+      for (let n = 0; n <= max(); n++) {
+        const d = document.createElement('button');
+        d.type = 'button'; d.className = 'bundle-dot' + (n === i ? ' on' : ''); d.setAttribute('aria-label', 'Go to slide ' + (n + 1));
+        d.addEventListener('click', () => { i = n; render(); });
+        dots.appendChild(d);
+      }
+      prev.disabled = i === 0; next.disabled = i === max();
+    }
+    prev.addEventListener('click', () => { i--; render(); });
+    next.addEventListener('click', () => { i++; render(); });
+    addEventListener('resize', render);
+    render();
+  })();
+
   // ── Active nav link ────────────────────────────────────────
   const page = location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('.nav-link[href]').forEach((link) => {
