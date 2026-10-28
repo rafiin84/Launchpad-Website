@@ -37,7 +37,7 @@
 
 /* Detail / pipeline */
 .app-banner { background:linear-gradient(135deg,#4F46E5,#9333EA); border-radius:16px; color:#fff; padding:22px 26px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
-.app-banner h3 { color:#fff; font-family:var(--font-display); font-size:22px; margin-bottom:4px; }
+.app-banner h3, .split .app-banner h3 { color:#fff !important; font-family:var(--font-display); font-size:22px; margin-bottom:4px; }
 .app-banner p { opacity:.85; font-size:13px; }
 .ask { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); border-radius:12px; padding:10px 18px; text-align:center; }
 .ask small { display:block; font-size:10px; letter-spacing:.8px; opacity:.85; }
