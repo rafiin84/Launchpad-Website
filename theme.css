@@ -212,3 +212,19 @@ body > section.bundle-section { background:linear-gradient(180deg,#F4F2FD 0%,#ff
 .vc-amt { text-align:right; } .vc-amt b { display:block; font-size:11.5px; } .vc-amt small { color:#9ca3af; }
 .vc-co p { grid-column:1/-1; color:#6b7280; font-size:9.5px; line-height:1.55; }
 @media (max-width:900px){ .vc { grid-template-columns:1fr; } .vc-side { display:none; } .vc-kpis { grid-template-columns:1fr 1fr; } .vc-insrow,.vc-two,.vc-cos { grid-template-columns:1fr; } .hero-frame { height:520px; } }
+
+/* Modules grid */
+#modules { background:linear-gradient(180deg,#F6F5FE 0%,#fff 100%); }
+.mx-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:8px; }
+.mx-card { --c:#5448CE; position:relative; background:#fff; border:1px solid #ececf4; border-radius:20px; padding:32px 28px 28px; overflow:hidden; transition:transform .25s, box-shadow .25s, border-color .25s; }
+.mx-card::after { content:''; position:absolute; left:0; right:0; bottom:0; height:4px; background:var(--c); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
+.mx-card:hover { transform:translateY(-6px); box-shadow:0 18px 40px -16px rgba(30,27,75,.25); border-color:transparent; }
+.mx-card:hover::after { transform:scaleX(1); }
+.mx-num { position:absolute; top:22px; right:26px; font-size:44px; font-weight:900; letter-spacing:-.04em; color:#f0f0f7; line-height:1; }
+.mx-icon { width:56px; height:56px; border-radius:16px; background:var(--c); display:flex; align-items:center; justify-content:center; margin-bottom:22px; box-shadow:0 10px 20px -8px var(--c); }
+.mx-card h3 { font-size:21px; font-weight:800; color:#111; margin-bottom:10px; }
+.mx-card p { font-size:15px; line-height:1.7; color:var(--text-secondary); }
+.mx-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:20px; }
+.mx-tags span { font-size:12px; font-weight:700; color:var(--c); background:color-mix(in srgb,var(--c) 10%,#fff); padding:5px 12px; border-radius:99px; }
+@media (max-width:1024px){ .mx-grid { grid-template-columns:1fr 1fr; } }
+@media (max-width:640px){ .mx-grid { grid-template-columns:1fr; } }
