@@ -256,3 +256,49 @@ body > section.bundle-section { background:linear-gradient(180deg,#F4F2FD 0%,#ff
 .bundle-viewport { padding:12px 4px; margin:-12px -4px; }
 @media (max-width:1024px){ .bundle-track .mx-page { grid-template-columns:1fr 1fr; } }
 @media (max-width:640px){ .bundle-track .mx-page { grid-template-columns:1fr; } }
+
+/* Home feature sections */
+.fx-sec .split { margin-bottom:0; }
+.fx { background:#fff; border:1px solid var(--border); border-radius:18px; box-shadow:0 30px 60px -28px rgba(30,27,75,.35); padding:20px; font-size:13px; color:#374151; text-align:left; }
+.fx-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+.fx-top b { font-size:15px; color:#111; }
+.fx-top span { font-size:11px; color:#6b7280; }
+.fx-kpis { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:14px; }
+.fx-kpi { border:1px solid #ececf4; border-radius:12px; padding:11px 12px; background:#FAFAFD; }
+.fx-kpi b { display:block; font-size:19px; color:#111; letter-spacing:-.02em; }
+.fx-kpi small { font-size:11px; color:#6b7280; }
+.fx-kpi em { font-style:normal; font-size:11px; font-weight:700; color:#16A34A; margin-left:4px; }
+.fx-two { display:grid; grid-template-columns:1.4fr 1fr; gap:12px; }
+.fx-box { border:1px solid #ececf4; border-radius:12px; padding:12px; }
+.fx-box h5 { font-size:12px; color:#111; margin-bottom:10px; }
+.fx-bars { display:flex; align-items:flex-end; gap:7px; height:90px; }
+.fx-bars i { flex:1; background:#DDD9F7; border-radius:5px 5px 0 0; }
+.fx-bars i.hot { background:#5448CE; }
+.fx-funnel div { display:flex; justify-content:space-between; font-size:11px; padding:6px 9px; border-radius:6px; margin-bottom:5px; color:#fff; font-weight:600; }
+.fx-row { display:flex; align-items:center; gap:12px; padding:11px 0; border-top:1px solid #f0f0f6; }
+.fx-row:first-of-type { border-top:0; }
+.fx-av { width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:13px; flex-shrink:0; }
+.fx-row .nm { font-weight:700; color:#111; font-size:13px; }
+.fx-row .mt { font-size:11px; color:#6b7280; }
+.fx-row .end { margin-left:auto; text-align:right; font-size:11px; color:#6b7280; }
+.fx-row .end b { display:block; font-size:14px; color:#111; }
+.fx-pill { display:inline-block; font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:99px; background:#F1F5F9; color:#475569; }
+.fx-pill.g { background:#DCFCE7; color:#15803D; } .fx-pill.b { background:#DBEAFE; color:#1D4ED8; } .fx-pill.o { background:#FFEDD5; color:#C2410C; } .fx-pill.r { background:#FEE2E2; color:#B91C1C; } .fx-pill.p { background:#EDE9FE; color:#6D28D9; }
+.fx-chat { display:grid; grid-template-columns:1fr 150px; gap:14px; }
+.fx-msgs { display:flex; flex-direction:column; gap:9px; }
+.fx-b { max-width:82%; padding:9px 12px; border-radius:14px; font-size:12.5px; line-height:1.5; }
+.fx-b.in { background:#F1F1F7; color:#222; border-bottom-left-radius:4px; }
+.fx-b.out { background:#5448CE; color:#fff; align-self:flex-end; border-bottom-right-radius:4px; }
+.fx-typing { font-size:11px; color:#6b7280; }
+.fx-vis { border-left:1px solid #f0f0f6; padding-left:14px; font-size:11.5px; }
+.fx-vis b { display:block; color:#111; font-size:13px; margin-bottom:8px; }
+.fx-vis p { margin-bottom:7px; color:#6b7280; } .fx-vis p span { display:block; color:#111; font-weight:600; }
+.fx-q { margin-bottom:14px; }
+.fx-q > b { display:block; font-size:12.5px; color:#111; margin-bottom:8px; }
+.fx-res { display:grid; grid-template-columns:90px 1fr 34px; align-items:center; gap:10px; font-size:11.5px; margin-bottom:6px; }
+.fx-res i { display:block; height:8px; border-radius:99px; background:#E9E7F7; position:relative; overflow:hidden; }
+.fx-res i::after { content:''; position:absolute; inset:0 auto 0 0; width:var(--w); background:#5448CE; border-radius:99px; }
+.fx-date { width:46px; border-radius:10px; background:#EEF2FF; color:#4338CA; text-align:center; padding:6px 0; flex-shrink:0; }
+.fx-date b { display:block; font-size:17px; line-height:1; } .fx-date small { font-size:10px; font-weight:700; text-transform:uppercase; }
+.fx-prog { height:6px; background:#EEE; border-radius:99px; overflow:hidden; margin-top:6px; } .fx-prog i { display:block; height:100%; background:#22C55E; }
+@media (max-width:640px){ .fx-kpis { grid-template-columns:1fr 1fr; } .fx-two { grid-template-columns:1fr; } .fx-chat { grid-template-columns:1fr; } .fx-vis { border-left:0; padding-left:0; } }
