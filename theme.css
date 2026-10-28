@@ -126,3 +126,9 @@ body > section.cta-section { background:linear-gradient(135deg,#003acc 0%,#5448C
 .cta-section .cta-desc, .cta-section .cta-note { color:rgba(255,255,255,.85); }
 .cta-section .btn-secondary { color:#fff; border-color:rgba(255,255,255,.6); }
 .cta-section .btn-secondary:hover { background:rgba(255,255,255,.12); border-color:#fff; }
+
+/* Stats strip: six product areas */
+.stats-section .facts { grid-template-columns:repeat(6,1fr); }
+.stats-section .fact b { font-size:18px; line-height:1.3; }
+@media (max-width:1024px){ .stats-section .facts { grid-template-columns:repeat(3,1fr); } }
+@media (max-width:640px){ .stats-section .facts { grid-template-columns:1fr 1fr; } }
