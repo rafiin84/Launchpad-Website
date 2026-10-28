@@ -203,7 +203,7 @@
     const cards = track.children, dots = document.getElementById('bundle-dots');
     const prev = document.getElementById('bundle-prev'), next = document.getElementById('bundle-next');
     let i = 0;
-    const perView = () => (innerWidth <= 640 ? 1 : innerWidth <= 1024 ? 2 : 3);
+    const perView = () => (track.firstElementChild.classList.contains('mx-page') ? 1 : innerWidth <= 640 ? 1 : innerWidth <= 1024 ? 2 : 4);
     const max = () => cards.length - perView();
     function render() {
       i = Math.max(0, Math.min(i, max()));
